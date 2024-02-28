@@ -27,11 +27,12 @@ public class Staff {
 
     /**
      * Create a Staff member
+     *
      * @param firstName the staff member's first name
-     * @param lastName the staff member's surname
-     * @param email the staff member's email address
-     * @param phone the staff member's phone number
-     * @param password the password for the staff member's account
+     * @param lastName  the staff member's surname
+     * @param email     the staff member's email address
+     * @param phone     the staff member's phone number
+     * @param password  the password for the staff member's account
      */
     public Staff(String firstName, String lastName, String email, String phone, String password) {
         this.firstName = firstName;
@@ -44,6 +45,7 @@ public class Staff {
 
     /**
      * Get the staff member's first name
+     *
      * @return the staff member's first name
      */
     public String getFirstName() {
@@ -52,6 +54,7 @@ public class Staff {
 
     /**
      * Set the staff member's first name
+     *
      * @param firstName the staff member's first name
      */
     public void setFirstName(String firstName) {
@@ -60,6 +63,7 @@ public class Staff {
 
     /**
      * Get the staff member's last name
+     *
      * @return the staff member's last name
      */
     public String getLastName() {
@@ -68,6 +72,7 @@ public class Staff {
 
     /**
      * Set the staff member's last name
+     *
      * @param lastName the staff member's last name
      */
     public void setLastName(String lastName) {
@@ -76,6 +81,7 @@ public class Staff {
 
     /**
      * Get the staff member's email address
+     *
      * @return the staff member's email address
      */
     public String getEmail() {
@@ -84,6 +90,7 @@ public class Staff {
 
     /**
      * Set the staff member's email address
+     *
      * @param email the staff member's email address
      */
     public void setEmail(String email) {
@@ -92,6 +99,7 @@ public class Staff {
 
     /**
      * Get the staff member's phone number
+     *
      * @return the staff member's phone number
      */
     public String getPhone() {
@@ -100,6 +108,7 @@ public class Staff {
 
     /**
      * Set the staff member's phone number
+     *
      * @param phone the staff member's phone number
      */
     public void setPhone(String phone) {
@@ -108,6 +117,7 @@ public class Staff {
 
     /**
      * Get the staff member's password
+     *
      * @return the staff member's password
      */
     public String getPassword() {
@@ -116,6 +126,7 @@ public class Staff {
 
     /**
      * Set the staff member's password
+     *
      * @param password the staff member's password
      */
     public void setPassword(String password) {
