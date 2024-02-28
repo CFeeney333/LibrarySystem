@@ -7,6 +7,10 @@
 public class Book {
 
     /**
+     * The title of the book
+     */
+    private String title;
+    /**
      * The author of the book
      */
     private String author;
@@ -31,13 +35,15 @@ public class Book {
     /**
      * Create a book object
      *
+     * @param title         the title of the book as it appears on the cover
      * @param author        the author of the book as it appears on the cover
      * @param isbn          the 13-digit ISBN of the book
      * @param pages         the amount of pages in the book
      * @param isIllustrated whether the book is illustrated
      * @param inLibrary     whether the book is in the library i.e. not taken out on loan
      */
-    public Book(String author, long isbn, int pages, boolean isIllustrated, boolean inLibrary) {
+    public Book(String title, String author, long isbn, int pages, boolean isIllustrated, boolean inLibrary) {
+        this.title = title;
         this.author = author;
         this.isbn = isbn;
         this.pages = pages;
@@ -51,13 +57,14 @@ public class Book {
      * The flag saying that the book is in the library is set to true by default
      * </p>
      *
+     * @param title         the title of the book as it appears on the cover
      * @param author        the author of the book as it appears on the cover
      * @param isbn          the 13-digit ISBN of the book
      * @param pages         the amount of pages in the book
      * @param isIllustrated whether the book is illustrated
      */
-    public Book(String author, long isbn, int pages, boolean isIllustrated) {
-        this(author, isbn, pages, isIllustrated, true);
+    public Book(String title, String author, long isbn, int pages, boolean isIllustrated) {
+        this(title, author, isbn, pages, isIllustrated, true);
     }
 
     /**
@@ -67,14 +74,31 @@ public class Book {
      * The flag saying whether the book is illustrated is set to false be default
      * </p>
      *
+     * @param title  the title of the book as it appears on the cover
      * @param author the author of the book as it appears on the cover
      * @param isbn   the 13-digit ISBN of the book
      * @param pages  the amount of pages in the book
      */
-    public Book(String author, long isbn, int pages) {
-        this(author, isbn, pages, false);
+    public Book(String title, String author, long isbn, int pages) {
+        this(title, author, isbn, pages, false);
     }
 
+
+    /**
+     * Get the title of the book
+     * @return the title as it appears on the cover of the book
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * Set the title of the book
+     * @param title the title as it appears on the cover of the book
+     */
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     /**
      * Get the author of the book
