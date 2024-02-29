@@ -1,3 +1,5 @@
+package entities;
+
 /**
  * Book class for managing books in a library
  * <p>

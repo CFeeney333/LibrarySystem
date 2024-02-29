@@ -1,3 +1,5 @@
+package entities;
+
 /**
  * A member of Staff of a Library
  */
