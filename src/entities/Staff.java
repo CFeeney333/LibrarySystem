@@ -6,6 +6,10 @@ package entities;
 public class Staff {
 
     /**
+     * The staff user's id
+     */
+    private long id;
+    /**
      * The first name of the staff user
      */
     private String firstName;
@@ -14,36 +18,56 @@ public class Staff {
      */
     private String lastName;
     /**
-     * The staff user's email address
+     * The staff user's password for their account
      */
-    private String email;
+    private String password;
     /**
      * The staff user's phone number
      */
     private String phone;
     /**
-     * The staff user's password for their account
+     * The staff user's email address
      */
-    private String password;
+    private String email;
 
 
     /**
-     * Create a staff user
+     * Create a Staff user
      *
+     * @param id        the staff user's id
      * @param firstName the staff user's first name
      * @param lastName  the staff user's surname
-     * @param email     the staff user's email address
-     * @param phone     the staff user's phone number
      * @param password  the password for the staff user's account
+     * @param phone     the staff user's phone number
+     * @param email     the staff user's email address
      */
-    public Staff(String firstName, String lastName, String email, String phone, String password) {
+    public Staff(long id, String firstName, String lastName, String password, String phone, String email) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
         this.password = password;
+        this.phone = phone;
+        this.email = email;
     }
 
+
+    /**
+     * Get the staff user's id
+     *
+     * @return the staff user's id
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * Set the staff user's id
+     *
+     * @param id the staff user's id
+     */
+    public void setId(long id) {
+        this.id = id;
+    }
 
     /**
      * Get the staff user's first name
