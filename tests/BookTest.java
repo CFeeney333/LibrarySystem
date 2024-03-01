@@ -49,5 +49,31 @@ public class BookTest {
         assertEquals("The Hobbit", book.getTitle());
     }
 
-    // TODO 1/3/24: Add more tests
+    @Test
+    public void isbnTest() {
+        assertEquals(1234123412345L, book.getIsbn());
+        book.setIsbn(4567456745678L);
+        assertEquals(4567456745678L, book.getIsbn());
+    }
+
+    @Test
+    public void pagesTest() {
+        assertEquals(1234, book.getPages());
+        book.setPages(2345);
+        assertEquals(2345, book.getPages());
+    }
+
+    @Test
+    public void illustratedTest() {
+        assertFalse(book.isIllustrated());
+        book.setIllustrated(true);
+        assertTrue(book.isIllustrated());
+    }
+
+    @Test
+    public void inLibraryTest() {
+        assertTrue(book.isInLibrary());
+        book.setInLibrary(false);
+        assertFalse(book.isInLibrary());
+    }
 }
