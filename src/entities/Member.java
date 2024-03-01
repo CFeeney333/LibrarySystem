@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.ArrayList;
+
 /**
  * A Member user of the library system.
  * <p>
@@ -7,6 +9,9 @@ package entities;
  * </p>
  */
 public class Member extends User {
+
+    private ArrayList<Book> borrowedBooks = new ArrayList<>();
+
 
     /**
      * Create a Member user of a library system
@@ -23,5 +28,17 @@ public class Member extends User {
      */
     public Member(long id, String firstName, String lastName, String password, String phone, String email) {
         super(id, firstName, lastName, password, phone, email);
+    }
+
+    public void borrowBook(Book book) {
+        borrowedBooks.add(book);
+    }
+
+    public boolean returnBook(Book book) {
+        if (borrowedBooks.contains(book)) {
+            borrowedBooks.remove(book);
+            return true;
+        }
+        return false;
     }
 }
