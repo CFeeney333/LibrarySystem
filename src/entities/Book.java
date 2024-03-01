@@ -191,4 +191,21 @@ public class Book {
     public void setInLibrary(boolean inLibrary) {
         this.inLibrary = inLibrary;
     }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return new Book(title, author, isbn, pages, isIllustrated, inLibrary);
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", isbn=" + isbn +
+                ", pages=" + pages +
+                ", isIllustrated=" + isIllustrated +
+                ", inLibrary=" + inLibrary +
+                '}';
+    }
 }

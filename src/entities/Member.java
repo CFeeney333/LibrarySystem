@@ -41,4 +41,21 @@ public class Member extends User {
         }
         return false;
     }
+
+    @Override
+    protected Member clone() throws CloneNotSupportedException {
+        return new Member(getId(), getFirstName(), getLastName(), getPassword(), getPhone(), getEmail());
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id='" + getId() + '\'' +
+                ", firstname='" + getFirstName() + '\'' +
+                ", lastname=" + getLastName() +
+                ", password=" + getPassword() +
+                ", phone=" + getPhone() +
+                ", email=" + getEmail() +
+                '}';
+    }
 }

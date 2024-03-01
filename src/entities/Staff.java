@@ -21,4 +21,21 @@ public class Staff extends User {
     public Staff(long id, String firstName, String lastName, String password, String phone, String email) {
         super(id, firstName, lastName, password, phone, email);
     }
+
+    @Override
+    protected Staff clone() throws CloneNotSupportedException {
+        return new Staff(getId(), getFirstName(), getLastName(), getPassword(), getPhone(), getEmail());
+    }
+
+    @Override
+    public String toString() {
+        return "Staff{" +
+                "id='" + getId() + '\'' +
+                ", firstname='" + getFirstName() + '\'' +
+                ", lastname=" + getLastName() +
+                ", password=" + getPassword() +
+                ", phone=" + getPhone() +
+                ", email=" + getEmail() +
+                '}';
+    }
 }
