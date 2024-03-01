@@ -12,6 +12,14 @@ import java.util.ArrayList;
 public class Library {
 
     /**
+     * The name of the library
+     */
+    private String name;
+    /**
+     * The library's eircode
+     */
+    private String eircode;
+    /**
      * The arraylist of books belonging to the library
      */
     private ArrayList<Book> books = new ArrayList<>();
@@ -28,10 +36,47 @@ public class Library {
     /**
      * Create a Library object
      */
-    public Library() {
-
+    public Library(String name, String eircode) {
+        this.name = name;
+        this.eircode = eircode;
     }
 
+
+    /**
+     * Get the name of the library
+     *
+     * @return the library's name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Set the name of the library
+     *
+     * @param name the library's name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Get the library's eircode
+     *
+     * @return the library's eircode
+     */
+    public String getEircode() {
+        return eircode;
+    }
+
+    /**
+     * Set the library's eircode
+     *
+     * @param eircode the library's eircode
+     */
+    public void setEircode(String eircode) {
+        this.eircode = eircode;
+    }
 
     /**
      * Add a book to the library
