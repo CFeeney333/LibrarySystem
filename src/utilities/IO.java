@@ -63,22 +63,22 @@ public class IO {
     }
 
     /**
-     * Print a message to the console
+     * Print something to the console
      * <p>
      *     This does not add a newline. If you want to add a newline, use the IO.printLine method instead
      * </p>
-     * @param message the message to print to the console
+     * @param o the object to print to the console
      */
-    public static void print(String message) {
-        System.out.print(message);
+    public static void print(Object o) {
+        System.out.print(o);
     }
 
     /**
-     * Print a message to the console then go on to a new line
-     * @param message the message to print to the console
+     * Print an object to the console then go on to a new line
+     * @param o the object to print to the console
      */
-    public static void printLine(String message) {
-        System.out.println(message);
+    public static void printLine(Object o) {
+        System.out.println(o);
     }
 
     /**
