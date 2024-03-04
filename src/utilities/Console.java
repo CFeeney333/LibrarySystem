@@ -15,7 +15,7 @@ import java.util.Scanner;
  * after it, thus returning an empty String.
  * </p>
  */
-public class IO {
+public class Console {
 
     /**
      * Scanner for reading input from the console
