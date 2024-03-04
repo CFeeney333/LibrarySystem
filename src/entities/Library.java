@@ -287,6 +287,111 @@ public class Library {
         return withEmail;
     }
 
+    /**
+     * Return an arraylist of all books with a certain isbn
+     * <p>
+     * This means that there can be duplicates of the same book.
+     * </p>
+     *
+     * @param isbn the isbn to search for
+     * @return an arraylist of books with this isbn
+     */
+    public ArrayList<Book> getBookByISBN(long isbn) {
+        ArrayList<Book> withISBN = new ArrayList<>();
+        for (Book b : books) {
+            if (b.getIsbn() == isbn) {
+                withISBN.add(b);
+            }
+        }
+        return withISBN;
+    }
+
+    /**
+     * Return an arraylist of all books with a given title
+     *
+     * @param title the title to search for
+     * @return an arraylist of all books with that title
+     */
+    public ArrayList<Book> getBookByTitle(String title) {
+        ArrayList<Book> withTitle = new ArrayList<>();
+        for (Book b : books) {
+            if (b.getTitle().equals(title)) {
+                withTitle.add(b);
+            }
+        }
+        return withTitle;
+    }
+
+    /**
+     * Return an arraylist of all books with a given author
+     *
+     * @param author the author to search for
+     * @return an arraylist of all books with that author
+     */
+    public ArrayList<Book> getBookByAuthor(String author) {
+        ArrayList<Book> withAuthor = new ArrayList<>();
+        for (Book b : books) {
+            if (b.getAuthor().equals(author)) {
+                withAuthor.add(b);
+            }
+        }
+        return withAuthor;
+    }
+
+    /**
+     * Return an arraylist of all books with a given page count
+     *
+     * @param pages the page count to search for
+     * @return an arraylist of all books with that page count
+     */
+    public ArrayList<Book> getBookByPages(int pages) {
+        ArrayList<Book> withPages = new ArrayList<>();
+        for (Book b : books) {
+            if (b.getPages() == pages) {
+                withPages.add(b);
+            }
+        }
+        return withPages;
+    }
+
+    /**
+     * Return an arraylist of all the illustrated or non-illustrated books
+     *
+     * @param isIllustrated true to search for illustrated books, false to search for non-illustrated books
+     * @return an arraylist of books
+     */
+    public ArrayList<Book> getBooksByIsIllustrated(boolean isIllustrated) {
+        ArrayList<Book> withIllustrations = new ArrayList<>();
+        for (Book b : books) {
+            if (b.isIllustrated() == isIllustrated) {
+                withIllustrations.add(b);
+            }
+        }
+        return withIllustrations;
+    }
+
+    /**
+     * Return an arraylist of all the books that are, or are not in the library
+     *
+     * @param inLibrary true to search for books in the library, false to search for books not in the library
+     * @return an arraylist of books
+     */
+    public ArrayList<Book> getBooksByInLibrary(boolean inLibrary) {
+        ArrayList<Book> booksInLibrary = new ArrayList<>();
+        for (Book b : books) {
+            if (b.isIllustrated() == inLibrary) {
+                booksInLibrary.add(b);
+            }
+        }
+        return booksInLibrary;
+    }
+    // TODO 04/03/24: Add methods to remove, update, and delete objects from the library
+    // TODO 04/03/24: Make methods to search for books static methods of the Book class maybe
+    // TODO 04/03/24: Give Members an arraylist of books that they have borrowed
+    // TODO 04/03/24: Enable case insensitive searching
+    // TODO 04/03/24: Add an option to search in a given arraylist
+    // TODO 04/03/24: Remove the inLibrary method of the Book class
+
     @Override
     public String toString() {
         return "Library{" +
