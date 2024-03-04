@@ -112,6 +112,36 @@ public class Library {
     }
 
     /**
+     * Remove a book from the library
+     *
+     * @param book the book to remove from the library
+     * @return true if the book was in the library, otherwise false
+     */
+    public boolean removeBook(Book book) {
+        return this.books.remove(book);
+    }
+
+    /**
+     * Remove a staff user from the library
+     *
+     * @param staff the staff user to remove from the library
+     * @return true if the staff user was in the library, otherwise false
+     */
+    public boolean removeStaff(Staff staff) {
+        return this.staff.remove(staff);
+    }
+
+    /**
+     * Remove a member from the library
+     *
+     * @param member the member to remove from the library
+     * @return true if the member was in the library
+     */
+    public boolean removeMember(Member member) {
+        return this.members.remove(member);
+    }
+
+    /**
      * Return an arraylist of all staff with a certain id
      * <p>
      * Note that each staff should have a unique id. However this method allows for the chance that there is a
