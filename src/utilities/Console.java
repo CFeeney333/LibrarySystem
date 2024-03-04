@@ -92,7 +92,7 @@ public class Console {
     /**
      * Clear the console
      */
-    public void clear() {
+    public static void clear() {
         int LINES_TO_SKIP = 40;
         skip(LINES_TO_SKIP);
     }
@@ -102,7 +102,7 @@ public class Console {
      *
      * @param lines the amount of lines to skip
      */
-    private void skip(int lines) {
+    private static void skip(int lines) {
         for (int i = 0; i < lines; i++) {
             printLine();
         }
