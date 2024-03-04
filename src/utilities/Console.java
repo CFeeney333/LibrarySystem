@@ -53,11 +53,9 @@ public class Console {
     /**
      * Get the next integer from the console
      *
-     * @param prompt the prompt to display to the console
      * @return the next integer the user entered in the console
      */
-    public static int getInt(String prompt) {
-        print(prompt);
+    public static int getInt() {
         int input = sc.nextInt();
         sc.nextLine();
         return input;
