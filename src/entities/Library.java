@@ -111,6 +111,94 @@ public class Library {
         this.members.add(member);
     }
 
+    /**
+     * Return an arraylist of all staff with a certain id
+     * <p>
+     * Note that each staff should have a unique id. However this method allows for the chance that there is a
+     * duplicate, and can be dealt with by the called. Also note that this method will return an empty arraylist if
+     * a staff user with the given id is not found. This can be checked with aList.isEmpty();
+     * </p>
+     *
+     * @param id the staff id to search for
+     * @return an arraylist of staff user with that id
+     */
+    public ArrayList<Staff> getStaffByID(long id) {
+        ArrayList<Staff> withID = new ArrayList<>();
+        for (Staff s : staff) {
+            if (s.getId() == id) {
+                withID.add(s);
+            }
+        }
+        return withID;
+    }
+
+    /**
+     * Return an arraylist of all staff with a given first name
+     *
+     * @param name the staff first name to search for
+     * @return an arraylist of all staff users with that first name
+     */
+    public ArrayList<Staff> getStaffByFirstName(String name) {
+        ArrayList<Staff> withName = new ArrayList<>();
+        for (Staff s : staff) {
+            if (s.getFirstName().equals(name)) {
+                withName.add(s);
+            }
+        }
+        return withName;
+    }
+
+    /**
+     * Return an arraylist of all staff with a given last name
+     *
+     * @param name the staff last name to search for
+     * @return an arraylist of all staff users with that last name
+     */
+    public ArrayList<Staff> getStaffByLastName(String name) {
+        ArrayList<Staff> withName = new ArrayList<>();
+        for (Staff s : staff) {
+            if (s.getLastName().equals(name)) {
+                withName.add(s);
+            }
+        }
+        return withName;
+    }
+
+    /**
+     * Return an arraylist of all staff with a given phone number
+     *
+     * @param phoneNumber the phone number to search staff users for
+     * @return an arraylist of all staff users with that phone number
+     */
+    public ArrayList<Staff> getStaffByPhoneNumber(String phoneNumber) {
+        ArrayList<Staff> withNumber = new ArrayList<>();
+        for (Staff s : staff) {
+            if (s.getPhone().equals(phoneNumber)) {
+                withNumber.add(s);
+            }
+        }
+        return withNumber;
+    }
+
+    /**
+     * Return an arraylist of all staff with a given email address
+     * <p>
+     * The size of the returned arraylist should be 0 or 1
+     * </p>
+     *
+     * @param emailAddress the email address to search staff users for
+     * @return an arraylist of all staff users with that email address
+     */
+    public ArrayList<Staff> getStaffByEmail(String emailAddress) {
+        ArrayList<Staff> withEmail = new ArrayList<>();
+        for (Staff s : staff) {
+            if (s.getEmail().equals(emailAddress)) {
+                withEmail.add(s);
+            }
+        }
+        return withEmail;
+    }
+
     @Override
     public String toString() {
         return "Library{" +
