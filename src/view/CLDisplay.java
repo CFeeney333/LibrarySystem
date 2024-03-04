@@ -1,11 +1,7 @@
 package view;
-import java.util.Scanner;
 import utilities.Console;
 
 public class CLDisplay implements Display {
-
-    private final Scanner sc = new Scanner(System.in);
-
 
     /**
      * Show a screen with the options yes and no
@@ -62,7 +58,7 @@ public class CLDisplay implements Display {
         Console.print(content);
         Console.printLine();
         Console.print(">>> ");
-        return sc.nextLine();
+        return Console.nextLine();
     }
 
     /**
@@ -85,7 +81,7 @@ public class CLDisplay implements Display {
      */
     private void pressEnter() {
         Console.print("Press the ENTER key to continue... ");
-        sc.nextLine();
+        Console.nextLine();
     }
 
     /**

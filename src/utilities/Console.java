@@ -46,7 +46,7 @@ public class Console {
     public static String getWord(String prompt) {
         print(prompt);
         String word = sc.next();
-        sc.nextLine();
+        nextLine();
         return word;
     }
 
@@ -57,8 +57,12 @@ public class Console {
      */
     public static int getInt() {
         int input = sc.nextInt();
-        sc.nextLine();
+        nextLine();
         return input;
+    }
+
+    public static String nextLine() {
+        return sc.nextLine();
     }
 
     /**
