@@ -52,6 +52,7 @@ public class IO {
 
     /**
      * Get the next integer from the console
+     *
      * @param prompt the prompt to display to the console
      * @return the next integer the user entered in the console
      */
@@ -65,8 +66,9 @@ public class IO {
     /**
      * Print something to the console
      * <p>
-     *     This does not add a newline. If you want to add a newline, use the IO.printLine method instead
+     * This does not add a newline. If you want to add a newline, use the IO.printLine method instead
      * </p>
+     *
      * @param o the object to print to the console
      */
     public static void print(Object o) {
@@ -75,6 +77,7 @@ public class IO {
 
     /**
      * Print an object to the console then go on to a new line
+     *
      * @param o the object to print to the console
      */
     public static void printLine(Object o) {
@@ -82,9 +85,28 @@ public class IO {
     }
 
     /**
+     * Print a newline to the console
+     */
+    public static void printLine() {
+        System.out.println();
+    }
+
+    /**
      * Clear the console
      */
-    public static void clear() {
-        // TODO 1/3/24: implement clear method
+    public void clear() {
+        int LINES_TO_SKIP = 40;
+        skip(LINES_TO_SKIP);
+    }
+
+    /**
+     * Skip a certain amount of lines in the console
+     *
+     * @param lines the amount of lines to skip
+     */
+    private void skip(int lines) {
+        for (int i = 0; i < lines; i++) {
+            printLine();
+        }
     }
 }
