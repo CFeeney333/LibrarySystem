@@ -115,7 +115,7 @@ public class Library {
      * Return an arraylist of all staff with a certain id
      * <p>
      * Note that each staff should have a unique id. However this method allows for the chance that there is a
-     * duplicate, and can be dealt with by the called. Also note that this method will return an empty arraylist if
+     * duplicate, and can be dealt with by the caller. Also note that this method will return an empty arraylist if
      * a staff user with the given id is not found. This can be checked with aList.isEmpty();
      * </p>
      *
