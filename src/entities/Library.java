@@ -199,6 +199,94 @@ public class Library {
         return withEmail;
     }
 
+    /**
+     * Return an arraylist of all members with a certain id
+     * <p>
+     * Note that each member should have a unique id. However this method allows for the chance that there is a
+     * duplicate, and can be dealt with by the caller. Also note that this method will return an empty arraylist if
+     * a member user with the given id is not found. This can be checked with aList.isEmpty();
+     * </p>
+     *
+     * @param id the member id to search for
+     * @return an arraylist of member users with that id
+     */
+    public ArrayList<Member> getMemberByID(long id) {
+        ArrayList<Member> withID = new ArrayList<>();
+        for (Member m : members) {
+            if (m.getId() == id) {
+                withID.add(m);
+            }
+        }
+        return withID;
+    }
+
+    /**
+     * Return an arraylist of all members with a given first name
+     *
+     * @param name the member first name to search for
+     * @return an arraylist of all members users with that first name
+     */
+    public ArrayList<Member> getMemberByFirstName(String name) {
+        ArrayList<Member> withName = new ArrayList<>();
+        for (Member m : members) {
+            if (m.getFirstName().equals(name)) {
+                withName.add(m);
+            }
+        }
+        return withName;
+    }
+
+    /**
+     * Return an arraylist of all members with a given last name
+     *
+     * @param name the member last name to search for
+     * @return an arraylist of all member users with that last name
+     */
+    public ArrayList<Member> getMemberByLastName(String name) {
+        ArrayList<Member> withName = new ArrayList<>();
+        for (Member m : members) {
+            if (m.getLastName().equals(name)) {
+                withName.add(m);
+            }
+        }
+        return withName;
+    }
+
+    /**
+     * Return an arraylist of all members with a given phone number
+     *
+     * @param phoneNumber the phone number to search member users for
+     * @return an arraylist of all member users with that phone number
+     */
+    public ArrayList<Member> getMemberByPhoneNumber(String phoneNumber) {
+        ArrayList<Member> withNumber = new ArrayList<>();
+        for (Member m : members) {
+            if (m.getPhone().equals(phoneNumber)) {
+                withNumber.add(m);
+            }
+        }
+        return withNumber;
+    }
+
+    /**
+     * Return an arraylist of all members with a given email address
+     * <p>
+     * The size of the returned arraylist should be 0 or 1
+     * </p>
+     *
+     * @param emailAddress the email address to search member users for
+     * @return an arraylist of all member users with that email address
+     */
+    public ArrayList<Member> getMemberByEmail(String emailAddress) {
+        ArrayList<Member> withEmail = new ArrayList<>();
+        for (Member m : members) {
+            if (m.getEmail().equals(emailAddress)) {
+                withEmail.add(m);
+            }
+        }
+        return withEmail;
+    }
+
     @Override
     public String toString() {
         return "Library{" +
