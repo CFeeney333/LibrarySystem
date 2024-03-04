@@ -110,4 +110,15 @@ public class Library {
     public void addMember(Member member) {
         this.members.add(member);
     }
+
+    @Override
+    public String toString() {
+        return "Library{" +
+                "name='" + name + '\'' +
+                ", eircode='" + eircode + '\'' +
+                ", books=" + books.size() +
+                ", staff=" + staff.size() +
+                ", members=" + members.size() +
+                '}';
+    }
 }
