@@ -211,6 +211,22 @@ public class Library {
     }
 
     /**
+     * Return an arraylist of all staff with a given password
+     *
+     * @param password the staff password to search for
+     * @return an arraylist of all staff users with that password
+     */
+    public ArrayList<Staff> getStaffByPassword(String password) {
+        ArrayList<Staff> withPassword = new ArrayList<>();
+        for (Staff s : staff) {
+            if (s.getPassword().equals(password)) {
+                withPassword.add(s);
+            }
+        }
+        return withPassword;
+    }
+
+    /**
      * Return an arraylist of all staff with a given phone number
      *
      * @param phoneNumber the phone number to search staff users for
@@ -312,6 +328,16 @@ public class Library {
             }
         }
         return withName;
+    }
+
+    public ArrayList<Member> getMemberByPassword(String password) {
+        ArrayList<Member> withPassword = new ArrayList<>();
+        for (Member m : members) {
+            if (m.getPassword().equals(password)) {
+                withPassword.add(m);
+            }
+        }
+        return withPassword;
     }
 
     /**
