@@ -195,6 +195,22 @@ public class Library {
     }
 
     /**
+     * Return an arraylist of all staff with a given username
+     *
+     * @param name the staff username to search for
+     * @return an arraylist of all staff users with that username
+     */
+    public ArrayList<Staff> getStaffByUserName(String name) {
+        ArrayList<Staff> withName = new ArrayList<>();
+        for (Staff s : staff) {
+            if (s.getUserName().equals(name)) {
+                withName.add(s);
+            }
+        }
+        return withName;
+    }
+
+    /**
      * Return an arraylist of all staff with a given phone number
      *
      * @param phoneNumber the phone number to search staff users for
@@ -276,6 +292,22 @@ public class Library {
         ArrayList<Member> withName = new ArrayList<>();
         for (Member m : members) {
             if (m.getLastName().equals(name)) {
+                withName.add(m);
+            }
+        }
+        return withName;
+    }
+
+    /**
+     * Return an arraylist of all members with a given username
+     *
+     * @param name the member username to search for
+     * @return an arraylist of all member users with that username
+     */
+    public ArrayList<Member> getMemberByUserName(String name) {
+        ArrayList<Member> withName = new ArrayList<>();
+        for (Member m : members) {
+            if (m.getUserName().equals(name)) {
                 withName.add(m);
             }
         }

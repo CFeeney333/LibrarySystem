@@ -15,6 +15,10 @@ abstract class User {
      */
     private String lastName;
     /**
+     * The user's display and login name
+     */
+    private String userName;
+    /**
      * The user's password
      */
     private String password;
@@ -36,14 +40,16 @@ abstract class User {
      * @param id        the user's id
      * @param firstName the user's first name
      * @param lastName  the user's last name
+     * @param userName  the user's display and login name
      * @param password  the user's password
      * @param phone     the user's phone number
      * @param email     the user's email address
      */
-    public User(long id, String firstName, String lastName, String password, String phone, String email) {
+    public User(long id, String firstName, String lastName, String userName, String password, String phone, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.userName = userName;
         this.password = password;
         this.phone = phone;
         this.email = email;
@@ -101,6 +107,24 @@ abstract class User {
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    /**
+     * Get the user's display and login name
+     *
+     * @return the user's display and login name
+     */
+    public String getUserName() {
+        return userName;
+    }
+
+    /**
+     * Set the user's display and login name
+     *
+     * @param userName the user's display and login name
+     */
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     /**

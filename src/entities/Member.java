@@ -22,12 +22,13 @@ public class Member extends User {
      * @param id        the member user's id
      * @param firstName the member user's first name
      * @param lastName  the member user's last name
+     * @param userName  the member user's display and login name
      * @param password  the member user's password
      * @param phone     the member user's phone number
      * @param email     the member user's email address
      */
-    public Member(long id, String firstName, String lastName, String password, String phone, String email) {
-        super(id, firstName, lastName, password, phone, email);
+    public Member(long id, String firstName, String lastName, String userName, String password, String phone, String email) {
+        super(id, firstName, lastName, userName, password, phone, email);
     }
 
     public void borrowBook(Book book) {
@@ -44,7 +45,7 @@ public class Member extends User {
 
     @Override
     protected Member clone() throws CloneNotSupportedException {
-        return new Member(getId(), getFirstName(), getLastName(), getPassword(), getPhone(), getEmail());
+        return new Member(getId(), getFirstName(), getLastName(), getUserName(), getPassword(), getPhone(), getEmail());
     }
 
     @Override
@@ -53,6 +54,7 @@ public class Member extends User {
                 "id='" + getId() + '\'' +
                 ", firstname='" + getFirstName() + '\'' +
                 ", lastname=" + getLastName() +
+                ", username=" + getUserName() +
                 ", password=" + getPassword() +
                 ", phone=" + getPhone() +
                 ", email=" + getEmail() +
