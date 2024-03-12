@@ -1,23 +1,39 @@
-import entities.Book;
 import entities.Library;
-import entities.Member;
-import entities.Staff;
-import utilities.IO;
+import view.CLDisplay;
+import view.Display;
 
 public class LibrarySystem {
     public static void main(String[] args) {
-        Book b = new Book("The Lord of the Rings", "J.R.R. Tolkien", 124123412341L, 1234, true, true);
-        IO.printLine(b.toString());
-        Staff s = new Staff(98709870987L, "Mary", "Murphy", "abcd1234", "08912345678", "m.murphy@lib.ie");
-        IO.printLine(s.toString());
-        Member m = new Member(253647586L, "Jim", "Whelan", "messithegoat", "0874564567", "j.whelan@gmail.com");
-        IO.printLine(m.toString());
+        Display d = new CLDisplay();
+        Library l = new Library("Luke Wadding Library", "");
 
-        Library l = new Library("Luke Wadding", "XYZ 1234");
-        IO.printLine(l.toString());
-        l.addBook(b);
-        l.addStaff(s);
-        l.addMember(m);
-        IO.printLine(l.toString());
+        d.showMessage("LIBRARY MANAGEMENT SYSTEM",
+                """
+                        Welcome to the Library Management System!
+                                                
+                        Here, you can create Staff, Members and Books, and add them to the system.
+                        You can view, update and delete the objects""");
+
+        int option = d.showOptions("LIBRARY MANAGEMENT SYSTEM", "Log In", new String[] {
+                "Staff Login",
+                "Member Login"
+        });
+
+        switch (option) {
+            case 1:
+                staffLogin();
+                break;
+            case 2:
+                memberLogin();
+                break;
+        }
+    }
+
+    private static void staffLogin() {
+
+    }
+
+    private static void memberLogin() {
+
     }
 }
