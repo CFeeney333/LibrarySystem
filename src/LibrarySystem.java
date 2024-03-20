@@ -1,11 +1,17 @@
 import entities.Library;
+import entities.Staff;
 import view.CLDisplay;
 import view.Display;
 
+import java.util.ArrayList;
+
 public class LibrarySystem {
+    private static final Display d = new CLDisplay();
+    private static final Library l = new Library("Luke Wadding Library", "");
+
     public static void main(String[] args) {
-        Display d = new CLDisplay();
-        Library l = new Library("Luke Wadding Library", "");
+        // Add placeholder staff user
+        l.addStaff(new Staff(1111, "Tom", "Dwyer", "tdwyer", "pwd", "089 123 4567", "t.dwyer@lib.ie"));
 
         d.showMessage("LIBRARY MANAGEMENT SYSTEM",
                 """
@@ -30,7 +36,15 @@ public class LibrarySystem {
     }
 
     private static void staffLogin() {
-
+        String username;
+        boolean valid = true;
+        do {
+            username = d.showInput("STAFF LOGIN", "Please enter username", !valid);
+            ArrayList<Staff> withName = l.getStaffByUserName(username);
+            if (withName.isEmpty()) {
+                valid = false;
+            }
+        } while (!valid);
     }
 
     private static void memberLogin() {
