@@ -94,7 +94,7 @@ public class LibrarySystem {
                 // no
                 return null;
             }
-        } while (!valid);
+        }
     }
 
     private static Member memberLogin() {
@@ -103,7 +103,6 @@ public class LibrarySystem {
     }
 
     private static void startAdminSession() {
-
         d.showMessage("START ADMIN SESSION", "Not yet implemented!");
     }
 
