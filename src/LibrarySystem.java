@@ -38,7 +38,10 @@ public class LibrarySystem {
                     }
                     break;
                 case 2:
-                    staffLogin();
+                    Staff s = staffLogin();
+                    if (s != null) {
+                        startStaffSession(s);
+                    }
                     break;
                 case 3:
                     memberLogin();
@@ -69,14 +72,27 @@ public class LibrarySystem {
         return valid;
     }
 
-    private static void staffLogin() {
-        String username;
-        boolean valid = true;
-        do {
-            username = d.showInput("STAFF LOGIN", "Please enter username", !valid);
-            ArrayList<Staff> withName = l.getStaffByUserName(username);
-            if (withName.isEmpty()) {
-                valid = false;
+    private static Staff staffLogin() {
+        final String HEADING = "STAFF LOGIN";
+
+        while (true) {
+            String username, password;
+            username = d.showInput(HEADING, "Enter Staff username", false);
+            ArrayList<Staff> withUsername = l.getStaffByUserName(username);
+
+            password = d.showInput(HEADING, ("Enter password for " + username + "."), false);
+            ArrayList<Staff> withPassword = l.getStaffByPassword(password);
+
+            for (Staff u : withUsername) {
+                for (Staff p : withPassword) {
+                    if (u == p) {
+                        return u;
+                    }
+                }
+            }
+            if (d.showConfirm(HEADING, "Invalid username or password. Do you want to try again?") == 1) {
+                // no
+                return null;
             }
         } while (!valid);
     }
@@ -87,5 +103,9 @@ public class LibrarySystem {
 
     private static void startAdminSession() {
 
+
+    private static void startStaffSession(Staff s) {
+
+    }
     }
 }
