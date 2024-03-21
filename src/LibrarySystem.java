@@ -97,15 +97,21 @@ public class LibrarySystem {
         } while (!valid);
     }
 
-    private static void memberLogin() {
-
+    private static Member memberLogin() {
+        d.showMessage("MEMBER LOGIN", "Not yet implemented!");
+        return null;
     }
 
     private static void startAdminSession() {
 
+        d.showMessage("START ADMIN SESSION", "Not yet implemented!");
+    }
 
     private static void startStaffSession(Staff s) {
-
+        d.showMessage("START STAFF SESSION", "Not yet implemented!");
     }
+
+    private static void startMemberSession(Member m) {
+        d.showMessage("START MEMBER SESSION", "Not yet implemented!");
     }
 }
