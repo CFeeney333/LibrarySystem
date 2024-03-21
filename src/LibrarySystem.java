@@ -139,7 +139,26 @@ public class LibrarySystem {
     }
 
     private static void startAdminSession() {
-        d.showMessage("START ADMIN SESSION", "Not yet implemented!");
+        boolean loggedIn = true;
+        do {
+            int option = d.showOptions("MAIN MENU", "Logged in as " + a.getUserName(), new String[]{
+                    "Manage Staff",
+                    "Manage Password",
+                    "Logout"
+            });
+
+            switch (option) {
+                case 1:
+                    manageStaff();
+                    break;
+                case 2:
+                    d.showMessage("MANAGE PASSWORD", "Not yet implemented!");
+                    break;
+                case 3:
+                    loggedIn = false;
+                    break;
+            }
+        } while (loggedIn);
     }
 
     private static void startStaffSession(Staff s) {
@@ -148,5 +167,9 @@ public class LibrarySystem {
 
     private static void startMemberSession(Member m) {
         d.showMessage("START MEMBER SESSION", "Not yet implemented!");
+    }
+
+    private static void manageStaff() {
+        d.showMessage("MANAGE STAFF", "Not yet implemented!");
     }
 }
