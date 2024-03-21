@@ -78,6 +78,11 @@ public class LibrarySystem {
         }
     }
 
+    /**
+     * Return the Staff user if we have a valid login
+     *
+     * @return the Staff object if we have a valid login, otherwise null
+     */
     private static Staff staffLogin() {
         final String HEADING = "STAFF LOGIN";
 
@@ -103,6 +108,11 @@ public class LibrarySystem {
         }
     }
 
+    /**
+     * Return the Member user if we have a valid login
+     *
+     * @return the Member object if we have a valid login, otherwise null
+     */
     private static Member memberLogin() {
         final String HEADING = "MEMBER LOGIN";
 
