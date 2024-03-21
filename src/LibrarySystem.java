@@ -79,8 +79,8 @@ public class LibrarySystem {
     private static Staff staffLogin() {
         final String HEADING = "STAFF LOGIN";
 
+        String username, password;
         while (true) {
-            String username, password;
             username = d.showInput(HEADING, "Enter Staff username", false);
             ArrayList<Staff> withUsername = l.getStaffByUserName(username);
 
@@ -104,8 +104,8 @@ public class LibrarySystem {
     private static Member memberLogin() {
         final String HEADING = "MEMBER LOGIN";
 
+        String username, password;
         while (true) {
-            String username, password;
             username = d.showInput(HEADING, "Enter Member username", false);
             ArrayList<Member> withUsername = l.getMemberByUserName(username);
 
