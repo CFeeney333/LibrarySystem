@@ -189,7 +189,30 @@ public class LibrarySystem {
     }
 
     private static void startMemberSession(Member m) {
-        d.showMessage("START MEMBER SESSION", "Not yet implemented!");
+        boolean loggedIn = true;
+        do {
+            int option = d.showOptions("MAIN MENU", "Logged in as " + m.getUserName(), new String[]{
+                    "Borrow Books",
+                    "Return Books",
+                    "Manage Account",
+                    "Logout"
+            });
+
+            switch (option) {
+                case 1:
+                    d.showMessage("BORROW BOOKS", "Not yet implemented!");
+                    break;
+                case 2:
+                    d.showMessage("RETURN BOOKS", "Not yet implemented!");
+                    break;
+                case 3:
+                    d.showMessage("MANAGE MEMBER ACCOUNT", "Not yet implemented!");
+                    break;
+                case 4:
+                    loggedIn = false;
+                    break;
+            }
+        } while (loggedIn);
     }
 
     private static void manageStaff() {
