@@ -1,5 +1,6 @@
 import entities.Admin;
 import entities.Library;
+import entities.Member;
 import entities.Staff;
 import view.CLDisplay;
 import view.Display;
@@ -44,7 +45,10 @@ public class LibrarySystem {
                     }
                     break;
                 case 3:
-                    memberLogin();
+                    Member m = memberLogin();
+                    if (m != null) {
+                        startMemberSession(m);
+                    }
                     break;
                 case 4:
                     keepRunning = false;
@@ -62,7 +66,7 @@ public class LibrarySystem {
         String password;
         boolean valid = true;
         do {
-            password = d.showInput("ADMIN LOGIN", ("Enter password for " + a.getUserName() + ". Leave empty to return to login screen"), !valid);
+            password = d.showInput("ADMIN LOGIN", ("Enter password for " + a.getUserName() + ". Leave empty to return to login screen."), !valid);
             if (password.isEmpty()) {
                 return false;
             }
@@ -98,8 +102,28 @@ public class LibrarySystem {
     }
 
     private static Member memberLogin() {
-        d.showMessage("MEMBER LOGIN", "Not yet implemented!");
-        return null;
+        final String HEADING = "MEMBER LOGIN";
+
+        while (true) {
+            String username, password;
+            username = d.showInput(HEADING, "Enter Member username", false);
+            ArrayList<Member> withUsername = l.getMemberByUserName(username);
+
+            password = d.showInput(HEADING, ("Enter password for " + username + "."), false);
+            ArrayList<Member> withPassword = l.getMemberByPassword(password);
+
+            for (Member u : withUsername) {
+                for (Member p : withPassword) {
+                    if (u == p) {
+                        return u;
+                    }
+                }
+            }
+            if (d.showConfirm(HEADING, "Invalid username or password. Do you want to try again?") == 1) {
+                // no
+                return null;
+            }
+        }
     }
 
     private static void startAdminSession() {
