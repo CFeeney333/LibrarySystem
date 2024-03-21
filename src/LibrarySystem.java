@@ -63,17 +63,19 @@ public class LibrarySystem {
      * @return true if successful login
      */
     private static boolean adminLogin() {
+        final String HEADING = "ADMIN LOGIN";
+
         String password;
-        boolean valid = true;
-        do {
-            password = d.showInput("ADMIN LOGIN", ("Enter password for " + a.getUserName() + ". Leave empty to return to login screen."), !valid);
-            if (password.isEmpty()) {
+
+        while (true) {
+            password = d.showInput(HEADING, "Enter password for " + a.getUserName() + ".", false);
+            if (password.equals(a.getPassword())) {
+                return true;
+            }
+            if (d.showConfirm(HEADING, "Invalid password for " + a.getUserName() + ". Do you want to try again?") == 1) {
                 return false;
             }
-            valid = password.equals(a.getPassword());
-        } while (!valid);
-
-        return valid;
+        }
     }
 
     private static Staff staffLogin() {
