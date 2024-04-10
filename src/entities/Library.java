@@ -261,6 +261,11 @@ public class Library {
         return withEmail;
     }
 
+    @SuppressWarnings("unchecked")
+    public ArrayList<Staff> getAllStaff() {
+        return (ArrayList<Staff>) staff.clone();
+    }
+
     /**
      * Return an arraylist of all members with a certain id
      * <p>
