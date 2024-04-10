@@ -259,6 +259,13 @@ public class LibrarySystem {
                     continue;
                 }
                 invalid = false;
+
+                // if the id is already in use by a staff user, it can't be used again
+                if (!l.getStaffByID(id).isEmpty()) {
+                    invalid = true;
+                    d.showMessage(HEADING, "Staff with ID " + id + " already exists!. Please enter a unique id");
+                }
+
             } while (invalid);
 
             // Get the firstname and lastname
@@ -293,6 +300,7 @@ public class LibrarySystem {
 
     private static void displayStaff() {
         d.showMessage("DISPLAY STAFF USERS", "Not yet implemented!");
+
     }
 
     private static void updateStaff() {
