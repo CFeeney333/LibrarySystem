@@ -189,7 +189,6 @@ public class LibrarySystem {
     }
 
     private static void startMemberSession(Member m) {
-        boolean loggedIn = true;
         do {
             int option = d.showOptions("MAIN MENU", "Logged in as " + m.getUserName(), new String[]{
                     "Borrow Books",
@@ -209,10 +208,9 @@ public class LibrarySystem {
                     d.showMessage("MANAGE MEMBER ACCOUNT", "Not yet implemented!");
                     break;
                 case 4:
-                    loggedIn = false;
-                    break;
+                    return;
             }
-        } while (loggedIn);
+        } while (true);
     }
 
     private static void manageStaff() {
