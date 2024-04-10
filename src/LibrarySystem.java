@@ -19,7 +19,7 @@ public class LibrarySystem {
         d.showMessage("LIBRARY MANAGEMENT SYSTEM",
                 """
                         Welcome to the Library Management System!
-                                                
+                                               \s
                         Here, you can create Staff, Members and Books, and add them to the system.
                         You can view, update and delete the objects""");
 
