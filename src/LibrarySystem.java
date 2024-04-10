@@ -245,7 +245,50 @@ public class LibrarySystem {
     }
 
     private static void addStaff() {
-        d.showMessage("ADD STAFF USER", "Not yet implemented!");
+        final String HEADING = "ADD STAFF";
+        do {
+            // Get the id
+            boolean invalid = false;
+            long id = 0L;
+            do {
+                String input = d.showInput(HEADING, "ID:", invalid);
+                try {
+                    id = Long.parseLong(input);
+                } catch (NumberFormatException e) {
+                    invalid = true;
+                    continue;
+                }
+                invalid = false;
+            } while (invalid);
+
+            // Get the firstname and lastname
+            String firstName, lastName;
+            firstName = d.showInput(HEADING, "First Name:", false);
+            lastName = d.showInput(HEADING, "Last Name:", false);
+
+            // Get the username and password
+            String userName, password;
+            userName = d.showInput(HEADING, "User Name:", false);
+            password = d.showInput(HEADING, "Password:", false);
+
+            // Get the phone number and email address
+            String phone, email;
+            phone = d.showInput(HEADING, "Phone Number:", false);
+            email = d.showInput(HEADING, "Email Address:", false);
+
+            // Create the staff user
+            Staff s = new Staff(id, firstName, lastName, userName, password, phone, email);
+
+            // Confirm add
+            if (d.showConfirm(HEADING, "Confirm add the following staff user:\n" + s) == 0) {
+                l.addStaff(s);
+            }
+
+            // Give option to return to main menu or add a new staff user
+            if (d.showConfirm(HEADING, "Do you want to add another staff user?") == 1) {
+                return;
+            }
+        } while (true);
     }
 
     private static void displayStaff() {
