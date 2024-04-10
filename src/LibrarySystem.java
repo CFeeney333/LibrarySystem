@@ -216,7 +216,48 @@ public class LibrarySystem {
     }
 
     private static void manageStaff() {
-        d.showMessage("MANAGE STAFF", "Not yet implemented!");
+        do {
+            int option = d.showOptions("STAFF MANAGEMENT", "Choose an option", new String[]{
+                    "Add Staff User",
+                    "Display Staff Users",
+                    "Update Staff User",
+                    "Delete Staff User",
+                    "Back to Main Menu"
+            });
+
+            switch (option) {
+                case 1:
+                    addStaff();
+                    break;
+                case 2:
+                    displayStaff();
+                    break;
+                case 3:
+                    updateStaff();
+                    break;
+                case 4:
+                    deleteStaff();
+                    break;
+                case 5:
+                    return;
+            }
+        } while (true);
+    }
+
+    private static void addStaff() {
+        d.showMessage("ADD STAFF USER", "Not yet implemented!");
+    }
+
+    private static void displayStaff() {
+        d.showMessage("DISPLAY STAFF USERS", "Not yet implemented!");
+    }
+
+    private static void updateStaff() {
+        d.showMessage("UPDATE STAFF USER", "Not yet implemented!");
+    }
+
+    private static void deleteStaff() {
+        d.showMessage("DELETE STAFF USER", "Not yet implemented!");
     }
 
     private static void manageBooks() {
