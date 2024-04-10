@@ -299,8 +299,44 @@ public class LibrarySystem {
     }
 
     private static void displayStaff() {
-        d.showMessage("DISPLAY STAFF USERS", "Not yet implemented!");
-
+        final String HEADING = "DISPLAY STAFF";
+        do {
+            switch (d.showOptions(HEADING, "Choose an option", new String[]{
+                    "Display All",
+                    "Find by First Name",
+                    "Find by Last Name",
+                    "Find by Username",
+                    "Find by Phone Number",
+                    "Find by Email Address",
+                    "Back to Main Menu"
+            })) {
+                case 1:
+                    d.showMessage(HEADING, "All Staff:\n" + l.getAllStaff());
+                    break;
+                case 2:
+                    String firstName = d.showInput(HEADING, "What first name do you want to search for? ", false);
+                    d.showMessage(HEADING, "All Staff with First Name: " + firstName + l.getStaffByFirstName(firstName));
+                    break;
+                case 3:
+                    String lastName = d.showInput(HEADING, "What last name do you want to search for? ", false);
+                    d.showMessage(HEADING, "All Staff with Last Name: " + lastName + l.getStaffByLastName(lastName));
+                    break;
+                case 4:
+                    String userName = d.showInput(HEADING, "What username do you want to search for? ", false);
+                    d.showMessage(HEADING, "All Staff with Username: " + userName + l.getStaffByUserName(userName));
+                    break;
+                case 5:
+                    String phone = d.showInput(HEADING, "What phone number do you want to search for? ", false);
+                    d.showMessage(HEADING, "All staff with Phone Number: " + phone + l.getStaffByPhoneNumber(phone));
+                    break;
+                case 6:
+                    String email = d.showInput(HEADING, "What email address do you want to search for? ", false);
+                    d.showMessage(HEADING, "Add staff with Email: " + email + l.getStaffByEmail(email));
+                    break;
+                case 7:
+                    return;
+            }
+        } while (true);
     }
 
     private static void updateStaff() {
