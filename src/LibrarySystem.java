@@ -2,6 +2,7 @@ import entities.Admin;
 import entities.Library;
 import entities.Member;
 import entities.Staff;
+import utilities.EntityUtils;
 import view.CLDisplay;
 import view.Display;
 
@@ -300,6 +301,8 @@ public class LibrarySystem {
 
     private static void displayStaff() {
         final String HEADING = "DISPLAY STAFF";
+        String prefix = "";
+        ArrayList<Staff> searchResult = null;
         do {
             switch (d.showOptions(HEADING, "Choose an option", new String[]{
                     "Display All",
@@ -311,31 +314,38 @@ public class LibrarySystem {
                     "Back to Main Menu"
             })) {
                 case 1:
-                    d.showMessage(HEADING, "All Staff:\n" + l.getAllStaff());
+                    prefix = "All Staff";
+                    searchResult = l.getAllStaff();
                     break;
                 case 2:
                     String firstName = d.showInput(HEADING, "What first name do you want to search for? ", false);
-                    d.showMessage(HEADING, "All Staff with First Name: " + firstName + l.getStaffByFirstName(firstName));
+                    prefix = "All Staff with First Name " + firstName;
+                    searchResult = l.getStaffByFirstName(firstName);
                     break;
                 case 3:
                     String lastName = d.showInput(HEADING, "What last name do you want to search for? ", false);
-                    d.showMessage(HEADING, "All Staff with Last Name: " + lastName + l.getStaffByLastName(lastName));
+                    prefix = "All Staff with Last Name " + lastName;
+                    searchResult = l.getStaffByLastName(lastName);
                     break;
                 case 4:
                     String userName = d.showInput(HEADING, "What username do you want to search for? ", false);
-                    d.showMessage(HEADING, "All Staff with Username: " + userName + l.getStaffByUserName(userName));
+                    prefix = "All Staff with Username " + userName;
+                    searchResult = l.getStaffByUserName(userName);
                     break;
                 case 5:
                     String phone = d.showInput(HEADING, "What phone number do you want to search for? ", false);
-                    d.showMessage(HEADING, "All staff with Phone Number: " + phone + l.getStaffByPhoneNumber(phone));
+                    prefix = "All Staff with Phone Number " + phone;
+                    searchResult = l.getStaffByPhoneNumber(phone);
                     break;
                 case 6:
                     String email = d.showInput(HEADING, "What email address do you want to search for? ", false);
-                    d.showMessage(HEADING, "Add staff with Email: " + email + l.getStaffByEmail(email));
+                    prefix = "All Staff with Email Address " + email;
+                    searchResult = l.getStaffByEmail(email);
                     break;
                 case 7:
                     return;
             }
+            d.showMessage(HEADING, prefix + ":\n" + EntityUtils.listStaff(searchResult));
         } while (true);
     }
 
