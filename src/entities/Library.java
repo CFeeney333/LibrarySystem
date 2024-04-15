@@ -479,7 +479,7 @@ public class Library {
         return booksInLibrary;
     }
     // TODO 04/03/24: Add methods to remove, update, and delete objects from the library
-    // TODO 04/03/24: Make methods to search for books static methods of the Book class maybe
+    // TODO 04/03/24: Make methods to search for books static methods of the Book class maybe or in EntityUtils - decide where to put these methods
     // TODO 04/03/24: Give Members an arraylist of books that they have borrowed
     // TODO 04/03/24: Enable case insensitive searching
     // TODO 04/03/24: Add an option to search in a given arraylist
