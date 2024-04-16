@@ -2,7 +2,7 @@ import entities.Admin;
 import entities.Library;
 import entities.Member;
 import entities.Staff;
-import utilities.EntityUtils;
+import utilities.LibraryUtils;
 import view.CLDisplay;
 import view.Display;
 
