@@ -90,7 +90,7 @@ public class CLDisplay implements Display {
      * @param title   the title of the screen
      * @param content the content of the screen
      * @param options the array of options
-     * @return and integer representing the index of the option chosen
+     * @return and integer representing the index of the option chosen beginning with 1 to the size of the array inclusive
      */
     @Override
     public int showOptions(String title, String content, String[] options) {
