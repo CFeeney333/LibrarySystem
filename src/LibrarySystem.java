@@ -299,53 +299,59 @@ public class LibrarySystem {
         } while (true);
     }
 
+    private static ArrayList<Staff> searchStaff(String heading) {
+        ArrayList<Staff> searchResult = null;
+        switch (d.showOptions(heading, "Choose a search method", new String[]{
+                "All",
+                "Find by First Name",
+                "Find by Last Name",
+                "Find by Username",
+                "Find by Phone Number",
+                "Find by Email Address",
+                "<- Back"
+        })) {
+            case 1:
+                searchResult = l.getAllStaff();
+                break;
+            case 2:
+                String firstName = d.showInput(heading, "What first name do you want to search for? ", false);
+                searchResult = l.getStaffByFirstName(firstName);
+                break;
+            case 3:
+                String lastName = d.showInput(heading, "What last name do you want to search for? ", false);
+                searchResult = l.getStaffByLastName(lastName);
+                break;
+            case 4:
+                String userName = d.showInput(heading, "What username do you want to search for? ", false);
+                searchResult = l.getStaffByUserName(userName);
+                break;
+            case 5:
+                String phone = d.showInput(heading, "What phone number do you want to search for? ", false);
+                searchResult = l.getStaffByPhoneNumber(phone);
+                break;
+            case 6:
+                String email = d.showInput(heading, "What email address do you want to search for? ", false);
+                searchResult = l.getStaffByEmail(email);
+                break;
+            case 7:
+                return null;
+        }
+        return searchResult;
+    }
+
     private static void displayStaff() {
         final String HEADING = "DISPLAY STAFF";
-        String prefix = "";
-        ArrayList<Staff> searchResult = null;
+        ArrayList<Staff> searchResult;
         do {
-            switch (d.showOptions(HEADING, "Choose an option", new String[]{
-                    "Display All",
-                    "Find by First Name",
-                    "Find by Last Name",
-                    "Find by Username",
-                    "Find by Phone Number",
-                    "Find by Email Address",
-                    "Back to Main Menu"
-            })) {
-                case 1:
-                    prefix = "All Staff";
-                    searchResult = l.getAllStaff();
-                    break;
-                case 2:
-                    String firstName = d.showInput(HEADING, "What first name do you want to search for? ", false);
-                    prefix = "All Staff with First Name " + firstName;
-                    searchResult = l.getStaffByFirstName(firstName);
-                    break;
-                case 3:
-                    String lastName = d.showInput(HEADING, "What last name do you want to search for? ", false);
-                    prefix = "All Staff with Last Name " + lastName;
-                    searchResult = l.getStaffByLastName(lastName);
-                    break;
-                case 4:
-                    String userName = d.showInput(HEADING, "What username do you want to search for? ", false);
-                    prefix = "All Staff with Username " + userName;
-                    searchResult = l.getStaffByUserName(userName);
-                    break;
-                case 5:
-                    String phone = d.showInput(HEADING, "What phone number do you want to search for? ", false);
-                    prefix = "All Staff with Phone Number " + phone;
-                    searchResult = l.getStaffByPhoneNumber(phone);
-                    break;
-                case 6:
-                    String email = d.showInput(HEADING, "What email address do you want to search for? ", false);
-                    prefix = "All Staff with Email Address " + email;
-                    searchResult = l.getStaffByEmail(email);
-                    break;
-                case 7:
-                    return;
+            searchResult = searchStaff(HEADING);
+            if (searchResult == null) {
+                return;
             }
-            d.showMessage(HEADING, prefix + ":\n" + EntityUtils.listStaff(searchResult));
+            if (searchResult.isEmpty()) {
+                d.showMessage(HEADING, "No staff found!");
+            } else {
+                d.showMessage(HEADING, "Search Results:\n" + LibraryUtils.orderedStaffList(searchResult));
+            }
         } while (true);
     }
 
