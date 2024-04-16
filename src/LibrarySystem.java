@@ -8,6 +8,9 @@ import view.Display;
 
 import java.util.ArrayList;
 
+/**
+ * This class simulates a Library System
+ */
 public class LibrarySystem {
     private static final Display d = new CLDisplay();
     private static final Library l = new Library("Luke Wadding Library", "");
@@ -218,6 +221,9 @@ public class LibrarySystem {
         } while (loggedIn);
     }
 
+    /**
+     * The main menu for staff crud functionality
+     */
     private static void manageStaff() {
         do {
             int option = d.showOptions("STAFF MANAGEMENT", "Choose an option", new String[]{
@@ -247,6 +253,12 @@ public class LibrarySystem {
         } while (true);
     }
 
+    /**
+     * A helper method for searching for staff members, giving the user the option of various search methods
+     *
+     * @param heading the heading to use for the display
+     * @return an ArrayList with the search results of all the staff matching the user's search criteria or null if the user opted to go back
+     */
     private static ArrayList<Staff> searchStaff(String heading) {
         ArrayList<Staff> searchResult = null;
         switch (d.showOptions(heading, "Choose a search method", new String[]{
@@ -287,6 +299,9 @@ public class LibrarySystem {
         return searchResult;
     }
 
+    /**
+     * Menu to add a Staff member to the system
+     */
     private static void addStaff() {
         final String HEADING = "ADD STAFF";
         do {
@@ -341,6 +356,9 @@ public class LibrarySystem {
         } while (true);
     }
 
+    /**
+     * Menu to display Staff members based on a search selection
+     */
     private static void displayStaff() {
         final String HEADING = "DISPLAY STAFF";
         ArrayList<Staff> searchResult;
@@ -357,6 +375,9 @@ public class LibrarySystem {
         } while (true);
     }
 
+    /**
+     * Menu to update a Staff member based on a search selection
+     */
     private static void updateStaff() {
         final String HEADING = "UPDATE STAFF";
         ArrayList<Staff> searchResult;
@@ -453,6 +474,9 @@ public class LibrarySystem {
         } while (true);
     }
 
+    /**
+     * Menu to delete a Staff member based on a search selection
+     */
     private static void deleteStaff() {
         final String HEADING = "DELETE STAFF";
         ArrayList<Staff> searchResult;
@@ -474,11 +498,11 @@ public class LibrarySystem {
                 selection = searchResult.get(d.showOptions(HEADING, "Choose a staff member:\n", options) - 1);  // take away one to represent the index
             }
 
-            if (d.showConfirm(HEADING, "Are you sure you want to delete the following staff member from the system?\n" + LibraryUtils.staffListItem(selection))==0) {
+            if (d.showConfirm(HEADING, "Are you sure you want to delete the following staff member from the system?\n" + LibraryUtils.staffListItem(selection)) == 0) {
                 l.removeStaff(selection);
                 d.showMessage(HEADING, "Staff member removed");
             }
-        } while(true);
+        } while (true);
     }
 
     private static void manageBooks() {
