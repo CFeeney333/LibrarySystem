@@ -142,6 +142,8 @@ public class LibrarySystem {
     private static void startAdminSession() {
         boolean loggedIn = true;
         do {
+            // TODO 15/04/24: Add option to change library details
+            // TODO 15/04/24: Save library details to file
             int option = d.showOptions("MAIN MENU", "Logged in as " + a.getUserName(), new String[]{
                     "Manage Staff",
                     "Manage Password",
