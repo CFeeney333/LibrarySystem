@@ -452,7 +452,31 @@ public class LibrarySystem {
     }
 
     private static void deleteStaff() {
-        d.showMessage("DELETE STAFF USER", "Not yet implemented!");
+        final String HEADING = "DELETE STAFF";
+        ArrayList<Staff> searchResult;
+        do {
+            Staff selection;
+            // search for and select a staff member
+            searchResult = searchStaff(HEADING);
+            if (searchResult == null) {
+                return;  // the user wants to go back to the main menu
+            }
+            if (searchResult.isEmpty()) {
+                d.showMessage(HEADING, "No staff found!");
+                continue;
+            } else {
+                String[] options = new String[searchResult.size()];
+                for (int i = 0; i < searchResult.size(); i++) {
+                    options[i] = LibraryUtils.staffListItem(searchResult.get(i));
+                }
+                selection = searchResult.get(d.showOptions(HEADING, "Choose a staff member:\n", options) - 1);  // take away one to represent the index
+            }
+
+            if (d.showConfirm(HEADING, "Are you sure you want to delete the following staff member from the system?\n" + LibraryUtils.staffListItem(selection))==0) {
+                l.removeStaff(selection);
+                d.showMessage(HEADING, "Staff member removed");
+            }
+        } while(true);
     }
 
     private static void manageBooks() {
