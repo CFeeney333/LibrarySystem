@@ -247,6 +247,46 @@ public class LibrarySystem {
         } while (true);
     }
 
+    private static ArrayList<Staff> searchStaff(String heading) {
+        ArrayList<Staff> searchResult = null;
+        switch (d.showOptions(heading, "Choose a search method", new String[]{
+                "All",
+                "Find by First Name",
+                "Find by Last Name",
+                "Find by Username",
+                "Find by Phone Number",
+                "Find by Email Address",
+                "<- Back"
+        })) {
+            case 1:
+                searchResult = l.getAllStaff();
+                break;
+            case 2:
+                String firstName = d.showInput(heading, "What first name do you want to search for? ", false);
+                searchResult = l.getStaffByFirstName(firstName);
+                break;
+            case 3:
+                String lastName = d.showInput(heading, "What last name do you want to search for? ", false);
+                searchResult = l.getStaffByLastName(lastName);
+                break;
+            case 4:
+                String userName = d.showInput(heading, "What username do you want to search for? ", false);
+                searchResult = l.getStaffByUserName(userName);
+                break;
+            case 5:
+                String phone = d.showInput(heading, "What phone number do you want to search for? ", false);
+                searchResult = l.getStaffByPhoneNumber(phone);
+                break;
+            case 6:
+                String email = d.showInput(heading, "What email address do you want to search for? ", false);
+                searchResult = l.getStaffByEmail(email);
+                break;
+            case 7:
+                return null;
+        }
+        return searchResult;
+    }
+
     private static void addStaff() {
         final String HEADING = "ADD STAFF";
         do {
@@ -299,46 +339,6 @@ public class LibrarySystem {
                 return;
             }
         } while (true);
-    }
-
-    private static ArrayList<Staff> searchStaff(String heading) {
-        ArrayList<Staff> searchResult = null;
-        switch (d.showOptions(heading, "Choose a search method", new String[]{
-                "All",
-                "Find by First Name",
-                "Find by Last Name",
-                "Find by Username",
-                "Find by Phone Number",
-                "Find by Email Address",
-                "<- Back"
-        })) {
-            case 1:
-                searchResult = l.getAllStaff();
-                break;
-            case 2:
-                String firstName = d.showInput(heading, "What first name do you want to search for? ", false);
-                searchResult = l.getStaffByFirstName(firstName);
-                break;
-            case 3:
-                String lastName = d.showInput(heading, "What last name do you want to search for? ", false);
-                searchResult = l.getStaffByLastName(lastName);
-                break;
-            case 4:
-                String userName = d.showInput(heading, "What username do you want to search for? ", false);
-                searchResult = l.getStaffByUserName(userName);
-                break;
-            case 5:
-                String phone = d.showInput(heading, "What phone number do you want to search for? ", false);
-                searchResult = l.getStaffByPhoneNumber(phone);
-                break;
-            case 6:
-                String email = d.showInput(heading, "What email address do you want to search for? ", false);
-                searchResult = l.getStaffByEmail(email);
-                break;
-            case 7:
-                return null;
-        }
-        return searchResult;
     }
 
     private static void displayStaff() {
