@@ -223,7 +223,7 @@ public class LibrarySystem {
                     "Display Staff Users",
                     "Update Staff User",
                     "Delete Staff User",
-                    "Back to Main Menu"
+                    "<- Back to Main Menu"
             });
 
             switch (option) {
