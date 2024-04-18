@@ -1,6 +1,8 @@
 package view;
 import utilities.Console;
 
+import java.util.InputMismatchException;
+
 public class CLDisplay implements Display {
 
     /**
@@ -35,7 +37,7 @@ public class CLDisplay implements Display {
                 } else {
                     invalid = true;
                 }
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 invalid = true;
             }
         } while (true);
@@ -116,7 +118,7 @@ public class CLDisplay implements Display {
                 } else {
                     invalid = true;
                 }
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 invalid = true;
             }
         } while (true);

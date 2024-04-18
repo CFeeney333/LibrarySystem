@@ -1,5 +1,6 @@
 package utilities;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -56,7 +57,13 @@ public class Console {
      * @return the next integer the user entered in the console
      */
     public static int getInt() {
-        int input = sc.nextInt();
+
+        int input;
+        try {
+            input = sc.nextInt();
+        } catch (InputMismatchException e) {
+            input = 0;
+        }
         nextLine();
         return input;
     }
