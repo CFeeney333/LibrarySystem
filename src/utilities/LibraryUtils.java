@@ -11,13 +11,13 @@ import java.util.ArrayList;
 public class LibraryUtils {
 
     /**
-     * Create a nice readable representation of an ArrayList of Staff members
+     * Create a nice readable representation of an ArrayList of Staff users
      *
      * <p>
-     * Uses the staffListItem method to create a nice readable String representation of an ArrayList of Staff members
+     * Uses the staffListItem method to create a nice readable String representation of an ArrayList of Staff users
      * </p>
      *
-     * @param staffArrayList the ArrayList of staff members to make a list of
+     * @param staffArrayList the ArrayList of staff users to make a list of
      * @return the String representation of the ArrayList
      */
     public static String orderedStaffList(ArrayList<Staff> staffArrayList) {
@@ -49,16 +49,16 @@ public class LibraryUtils {
     }
 
     /**
-     * Create a nice readable representation of a Staff member
+     * Create a nice readable representation of a Staff user
      *
      * <p>
-     * This method creates a nice readable String representation of a Staff member for display in the system. It
+     * This method creates a nice readable String representation of a Staff user for display in the system. It
      * intentionally does not include the password in the output, and the first name and last name are joined to make
      * the full name
      * </p>
      *
-     * @param staff the staff member to get the String representation of
-     * @return the String representation of the staff member
+     * @param staff the staff user to get the String representation of
+     * @return the String representation of the staff user
      */
     public static String staffListItem(Staff staff) {
         return "\t\tID: " + staff.getId() + "\n" +
