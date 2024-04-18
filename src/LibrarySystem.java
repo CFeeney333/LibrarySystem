@@ -99,6 +99,37 @@ public class LibrarySystem {
                     break;
             }
         } while (keepRunning);
+
+        if (d.showConfirm("SAVE", "Do you want to save before closing?") == 0) {
+            ArrayList<String> unsaved = new ArrayList<>();
+            try {
+                save("members.xml", l.getAllMembers());
+            } catch (Exception e) {
+                unsaved.add("members");
+            }
+
+            try {
+                save("staff.xml", l.getAllStaff());
+            } catch (Exception e) {
+                unsaved.add("staff");
+            }
+
+            try {
+                save("books.xml", l.getAllBooks());
+            } catch (Exception e) {
+                unsaved.add("books");
+            }
+
+            try {
+                saveObject("admin.xml", a);
+            } catch (Exception e) {
+                unsaved.add("admin");
+            }
+
+            if (!unsaved.isEmpty()) {
+                d.showMessage("WARNING!!!", "Unable to save " + unsaved);
+            }
+        }
     }
 
     /**
