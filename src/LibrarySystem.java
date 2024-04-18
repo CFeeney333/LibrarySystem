@@ -662,9 +662,94 @@ public class LibrarySystem {
         } while (true);
     }
 
+    /**
+     * Menu to update a Member user based on a search selection
+     */
     private static void updateMember() {
         final String HEADING = "UPDATE MEMBER";
-        d.showMessage(HEADING, "Not yet implemented!");
+        ArrayList<Member> searchResult;
+        do {
+            Member selection;
+            // Search for and select a member
+            searchResult = searchMembers(HEADING);
+            if (searchResult == null) {
+                return;  // the user wants to go back to the main menu
+            }
+            if (searchResult.isEmpty()) {
+                d.showMessage(HEADING, "No members found!");
+                continue;
+            } else {
+                String[] options = new String[searchResult.size()];
+                for (int i = 0; i < searchResult.size(); i++) {
+                    options[i] = LibraryUtils.memberListItem(searchResult.get(i));
+                }
+                selection = searchResult.get(d.showOptions(HEADING, "Choose a member:\n", options));
+            }
+
+            // Find property to update - this will only run if the else clause has been run so no need to put it inside
+            boolean keepUpdating = true;
+            do {
+                int propertyOption = d.showOptions(HEADING, "What property do you want to update:\n",
+                        new String[]{
+                                "ID",
+                                "First Name",
+                                "Last Name",
+                                "Username",
+                                "Password",
+                                "Phone Number",
+                                "Email Address",
+                                "<- Back"
+                        });
+                switch (propertyOption) {
+                    case 1:
+                        boolean invalid = false;
+                        long id = 0L;
+                        do {
+                            String input = d.showInput(HEADING, "Enter new value for ID\nCurrent value: " + selection.getId(), invalid);
+                            try {
+                                id = Long.parseLong(input);
+                            } catch (NumberFormatException e) {
+                                invalid = true;
+                                continue;
+                            }
+                            invalid = false;
+
+                            // if the id is already in use by a member user, it can't be used again
+                            if (!l.getMemberByID(id).isEmpty()) {
+                                invalid = true;
+                                d.showMessage(HEADING, "Member with ID " + id + " already exists! Please enter a unique id");
+                            }
+                        } while (invalid);
+                        selection.setId(id);
+                        break;
+                    case 2:
+                        selection.setFirstName(d.showInput(HEADING, "Enter new value for First name\nCurrent value: " + selection.getFirstName(), false));
+                        break;
+                    case 3:
+                        selection.setLastName(d.showInput(HEADING, "Enter new value for Last name\nCurrent value: " + selection.getLastName(), false));
+                        break;
+                    case 4:
+                        selection.setUserName(d.showInput(HEADING, "Enter new value for Username\nCurrent value: " + selection.getUserName(), false));
+                        break;
+                    case 5:
+                        // TODO 18/04/2024: Make username and password only changeable by the member in manage account and same for the staff member and admin
+                        String pwdAttempt = d.showInput(HEADING, "Please enter current Password", false);
+                        if (pwdAttempt.equals(selection.getPassword())) {
+                            // now we can change the password
+                            selection.setPassword(d.showInput(HEADING, "Enter new Password", false));
+                        } else {
+                            d.showMessage(HEADING, "Incorrect Password!");
+                        }
+                        break;
+                }
+                if (keepUpdating) {
+                    if (d.showConfirm(HEADING, "Do you want to update another property?") == 1) {
+                        d.showMessage(HEADING, "Updated Member\n" + LibraryUtils.memberListItem(selection));
+                        keepUpdating = false;
+                    }
+                }
+            } while (keepUpdating);
+        } while (true);
     }
 
     private static void deleteMember() {
