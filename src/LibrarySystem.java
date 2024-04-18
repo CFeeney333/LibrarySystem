@@ -3,6 +3,7 @@ import utilities.LibraryUtils;
 import view.CLDisplay;
 import view.Display;
 
+import javax.naming.ldap.LdapContext;
 import java.sql.Array;
 import java.util.ArrayList;
 
@@ -706,7 +707,95 @@ public class LibrarySystem {
      */
     private static void updateBook() {
         final String HEADING = "UPDATE BOOK";
-        d.showMessage(HEADING, "Not yet implemented!");
+        ArrayList<Book> searchResult;
+        do {
+            Book selection;
+            // Search for and select a book
+            searchResult = searchBooks(HEADING);
+            if (searchResult == null) {
+                return;  // the user wants to go back to the main menu
+            }
+            if (searchResult.isEmpty()) {
+                d.showMessage(HEADING, "No books found!");
+                continue;
+            } else {
+                String[] options = new String[searchResult.size()];
+                for (int i = 0; i < searchResult.size(); i++) {
+                    options[i] = LibraryUtils.bookListItem(searchResult.get(i));
+                }
+                selection = searchResult.get(d.showOptions(HEADING, "Choose a Book:\n", options) - 1);  // take away one to represent the index
+            }
+
+            // Find the property to update
+            boolean keepUpdating = true;
+            do {
+                int propertyOption = d.showOptions(HEADING, "What property do you want to update:\n", new String[]{
+                        "ISBN",
+                        "Title",
+                        "Author",
+                        "Pages",
+                        "Is the book illustrated?",
+                        "Is the book in the library?",
+                        "<- Back"
+                });
+                switch (propertyOption) {
+                    case 1:
+                        boolean invalidISBN = false;
+                        long isbn = 0L;
+                        do {
+                            String input = d.showInput(HEADING, "ISBN:", invalidISBN);
+                            try {
+                                isbn = Long.parseLong(input);
+                            } catch (NumberFormatException e) {
+                                invalidISBN = true;
+                                continue;
+                            }
+                            invalidISBN = false;
+                            // TODO 18/04/24: Create helper methods for getting a valid isbn, password, id etc. to make sure it's not negative or anything
+                            // TODO 18/04/24: Make sure the isbn is not negative
+                        } while (invalidISBN);
+                        selection.setIsbn(isbn);
+                        break;
+                    case 2:
+                        selection.setTitle(d.showInput(HEADING, "Enter new value for Title\nCurrent value: " + selection.getTitle(), false));
+                        break;
+                    case 3:
+                        selection.setAuthor(d.showInput(HEADING, "Enter new value for Author\nCurrent value: " + selection.getAuthor(), false));
+                        break;
+                    case 4:
+                        boolean invalidPages = false;
+                        int pages = 0;
+                        // TODO 18/04/24: As above, create a utility method for validating this
+                        do {
+                            String input = d.showInput(HEADING, "Enter new value for amount of Pages\nCurrent value: " + selection.getPages(), false);
+                            try {
+                                pages = Integer.parseInt(input);
+                            } catch (NumberFormatException e) {
+                                invalidPages = true;
+                                continue;
+                            }
+                            invalidPages = false;
+                        } while (invalidPages);
+                        selection.setPages(pages);
+                        break;
+                    case 5:
+                        boolean isIllustrated = d.showConfirm(HEADING, "Is the book illustrated?\nCurrent value: " + selection.isIllustrated()) == 0;
+                        break;
+                    case 6:
+                        boolean isInLibrary = d.showConfirm(HEADING, "Is the book in the library?\nCurrent value: " + selection.isInLibrary()) == 0;
+                        break;
+                    case 7:
+                        keepUpdating = false;
+                        break;
+                }
+                if (keepUpdating) {
+                    if (d.showConfirm(HEADING, "Do you want to update another property?") == 1) {
+                        d.showMessage(HEADING, "Update Book\n" + LibraryUtils.bookListItem(selection));
+                        keepUpdating = false;
+                    }
+                }
+            } while (keepUpdating);
+        } while (true);
     }
 
     /**
