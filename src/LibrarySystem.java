@@ -394,7 +394,7 @@ public class LibrarySystem {
                 for (int i = 0; i < searchResult.size(); i++) {
                     options[i] = LibraryUtils.staffListItem(searchResult.get(i));
                 }
-                selection = searchResult.get(d.showOptions(HEADING, "Choose a staff member:\n", options) - 1);  // take away one to represent the index
+                selection = searchResult.get(d.showOptions(HEADING, "Choose a staff user:\n", options) - 1);  // take away one to represent the index
             }
 
             // Find the property to update - this will only run if the else clause has been run so no need to put it inside
@@ -464,7 +464,7 @@ public class LibrarySystem {
                 }
                 if (keepUpdating) {
                     if (d.showConfirm(HEADING, "Do you want to update another property?") == 1) {
-                        d.showMessage(HEADING, "Updated Staff Member\n" + LibraryUtils.staffListItem(selection));
+                        d.showMessage(HEADING, "Updated Staff User\n" + LibraryUtils.staffListItem(selection));
                         keepUpdating = false;
                     }
                 }
