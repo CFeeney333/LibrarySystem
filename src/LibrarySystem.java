@@ -5,18 +5,60 @@ import view.Display;
 
 import java.util.ArrayList;
 
+import static utilities.LoadAndSave.*;
+
 /**
  * This class simulates a Library System
  */
 public class LibrarySystem {
     private static final Display d = new CLDisplay();
     private static final Library l = new Library("Luke Wadding Library", "");
-    private static final Admin a = new Admin("admin", "password");
+    private static Admin a = null;
 
-    public static void main(String[] args) {
-        // Add placeholder staff user
-        l.addStaff(new Staff(1111, "Tom", "Dwyer", "tdwyer", "pwd", "089 123 4567", "t.dwyer@lib.ie"));
-        l.addMember(new Member(1234, "Jim", "Fallon", "JFallon", "pwd", "044 324 5534", "jfallon@gmail.com"));
+    public static void main(String[] args) throws Exception {
+
+        // Try and load files
+        ArrayList<String> unloaded = new ArrayList<>();
+        try {
+            ArrayList<Book> books = load("books.xml");
+            for (Book b : books) {
+                l.addBook(b);
+            }
+        } catch (Exception e) {
+            unloaded.add("books");
+        }
+
+        try {
+            ArrayList<Member> members = load("members.xml");
+            for (Member m : members) {
+                l.addMember(m);
+            }
+        } catch (Exception e) {
+            unloaded.add("members");
+        }
+
+        try {
+            ArrayList<Staff> staff = load("staff.xml");
+            for (Staff s : staff) {
+                l.addStaff(s);
+            }
+        } catch (Exception e) {
+            unloaded.add("staff");
+        }
+
+        try {
+            a = (Admin) loadObject("admin.xml");
+        } catch (Exception e) {
+            // TODO 18/04/24: I should be able to add the admin to the library even if there is only one
+            // if we can't load the admin, we have to create it ourselves
+            a = new Admin("admin", "password");
+            unloaded.add("admin");
+        }
+
+        // Print a message to the screen if some of the files couldn't load
+        if (!unloaded.isEmpty()) {
+            d.showMessage("WARNING!!!", "Unable to load " + unloaded);
+        }
 
         d.showMessage("LIBRARY MANAGEMENT SYSTEM",
                 """
