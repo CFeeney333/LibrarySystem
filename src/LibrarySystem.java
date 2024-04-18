@@ -1062,11 +1062,9 @@ public class LibrarySystem {
                         }
                         break;
                 }
-                if (keepUpdating) {
-                    if (d.showConfirm(HEADING, "Do you want to update another property?") == 1) {
-                        d.showMessage(HEADING, "Updated Member\n" + LibraryUtils.userListItem(selection));
-                        keepUpdating = false;
-                    }
+                if (d.showConfirm(HEADING, "Do you want to update another property?") == 1) {
+                    d.showMessage(HEADING, "Updated Member\n" + LibraryUtils.userListItem(selection));
+                    keepUpdating = false;
                 }
             } while (keepUpdating);
         } while (true);
