@@ -1,7 +1,4 @@
-import entities.Admin;
-import entities.Library;
-import entities.Member;
-import entities.Staff;
+import entities.*;
 import utilities.LibraryUtils;
 import view.CLDisplay;
 import view.Display;
@@ -541,7 +538,60 @@ public class LibrarySystem {
      */
     private static void addBook() {
         final String HEADING = "ADD BOOK";
-        d.showMessage(HEADING, "Not yet implemented!");
+        do {
+            // Get the title
+            String title;
+            title = d.showInput(HEADING, "Title:", false);
+
+            // Get the author
+            String author;
+            author = d.showInput(HEADING, "Author:", false);
+
+            // Get the isbn - there can be duplicates
+            // TODO 18/04/2024: remove the ability for there to be duplicate books - use a hash map or something with the isbn as the key
+            boolean invalidISBN = false;
+            long isbn = 0L;
+            do {
+                String input = d.showInput(HEADING, "ISBN:", invalidISBN);
+                try {
+                    isbn = Long.parseLong(input);
+                } catch (NumberFormatException e) {
+                    invalidISBN = true;
+                    continue;
+                }
+                invalidISBN = false;
+            } while (invalidISBN);
+
+            // Get the pages
+            boolean invalidPages = false;
+            int pages = 0;
+            do {
+                String input = d.showInput(HEADING, "Pages:", invalidPages);
+                try {
+                    pages = Integer.parseInt(input);
+                } catch (NumberFormatException e) {
+                    invalidPages = true;
+                    continue;
+                }
+                invalidPages = false;
+            } while (invalidPages);
+
+            // Is it illustrated?
+            boolean isIllustrated = d.showConfirm(HEADING, "Is the book illustrated?") == 0;
+
+            // Create the new book - the book is automatically in the library
+            Book b = new Book(title, author, isbn, pages, isIllustrated);
+
+            // Confirm add
+            if (d.showConfirm(HEADING, "Confirm add the following book:\n" + b) == 0) {
+                l.addBook(b);
+            }
+
+            // Give option to return to main menu or add a new book
+            if (d.showConfirm(HEADING, "Do you want to add another book?") == 1) {
+                return;
+            }
+        } while (true);
     }
 
     /**
