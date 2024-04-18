@@ -11,9 +11,9 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class LoadAndSave {
-    public static <T> void save(String filename, ArrayList<T> data) throws Exception {
+    public static <T> void saveObject(String filename, ArrayList<T> data) throws Exception {
         XStream xstream = new XStream(new DomDriver());
-        ObjectOutputStream out = xstream.createObjectOutputStream(new FileWriter("../data/" + filename));
+        ObjectOutputStream out = xstream.createObjectOutputStream(new FileWriter(filename));
         out.writeObject(data);
         out.close();
     }
@@ -26,11 +26,11 @@ public class LoadAndSave {
     }
 
     @SuppressWarnings("unchecked")
-    public static ArrayList<Object> load(String filename) throws Exception {
+    public static <T> ArrayList<T> load(String filename) throws Exception {
         XStream xstream = new XStream(new DomDriver());
         xstream.addPermission(AnyTypePermission.ANY);
-        ObjectInputStream is = xstream.createObjectInputStream(new FileReader("../data/" + filename));
-        ArrayList<Object> data = (ArrayList<Object>) is.readObject();
+        ObjectInputStream is = xstream.createObjectInputStream(new FileReader(filename));
+        ArrayList<T> data = (ArrayList<T>) is.readObject();
         is.close();
         return data;
     }
