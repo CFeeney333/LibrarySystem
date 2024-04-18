@@ -507,7 +507,35 @@ public class LibrarySystem {
         d.showMessage("MANAGE BOOKS", "Not yet implemented!");
     }
 
+    /**
+     * The main menu for member crud functionality
+     */
     private static void manageMembers() {
-        d.showMessage("MANAGE MEMBERS", "Not yet implemented!");
+        do {
+            int option = d.showOptions("MEMBER MANAGEMENT", "Choose an option", new String[]{
+                    "Add Member User",
+                    "Display Member Users",
+                    "Update Member User",
+                    "Delete Member User",
+                    "<- Back to Main Menu"
+            });
+
+            switch (option) {
+                case 1:
+                    addMember();
+                    break;
+                case 2:
+                    displayMember();
+                    break;
+                case 3:
+                    updateMember();
+                    break;
+                case 4:
+                    deleteMember();
+                    break;
+                case 5:
+                    return;
+            }
+        } while (true);
     }
 }
