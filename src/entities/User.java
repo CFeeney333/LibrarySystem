@@ -1,6 +1,6 @@
 package entities;
 
-abstract class User extends BasicUser {
+public abstract class User extends BasicUser {
 
     /**
      * The user's id
