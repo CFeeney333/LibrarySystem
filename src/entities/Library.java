@@ -271,6 +271,11 @@ public class Library {
         return (ArrayList<Member>) members.clone();
     }
 
+    @SuppressWarnings("unchecked")
+    public ArrayList<Book> getAllBooks() {
+        return (ArrayList<Book>) books.clone();
+    }
+
     /**
      * Return an arraylist of all members with a certain id
      * <p>
