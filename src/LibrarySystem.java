@@ -3,8 +3,6 @@ import utilities.LibraryUtils;
 import view.CLDisplay;
 import view.Display;
 
-import javax.naming.ldap.LdapContext;
-import java.sql.Array;
 import java.util.ArrayList;
 
 /**
@@ -573,7 +571,7 @@ public class LibrarySystem {
                     }
                 } while (d.showConfirm(heading, "Try again?") == 1);
                 if (invalidISBN) {
-                    return new ArrayList<Book>();  // don't go back to the main menu, but just say that no books were found if an invalid isbn was given
+                    return new ArrayList<>();  // don't go back to the main menu, but just say that no books were found if an invalid isbn was given
                 }
                 break;
             case 3:
@@ -601,7 +599,7 @@ public class LibrarySystem {
                     }
                 } while (d.showConfirm(heading, "Try again?") == 1);
                 if (invalidPages) {
-                    return new ArrayList<Book>();  // as above, don't go back to the main menu, just say that no books were found
+                    return new ArrayList<>();  // as above, don't go back to the main menu, just say that no books were found
                 }
                 break;
             case 6:
