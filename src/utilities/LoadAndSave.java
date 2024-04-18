@@ -18,12 +18,29 @@ public class LoadAndSave {
         out.close();
     }
 
+    public static <T> void saveObject(String filename, T object) throws Exception {
+        XStream xstream = new XStream(new DomDriver());
+        ObjectOutputStream out = xstream.createObjectOutputStream(new FileWriter(filename));
+        out.writeObject(object);
+        out.close();
+    }
+
     @SuppressWarnings("unchecked")
     public static ArrayList<Object> load(String filename) throws Exception {
         XStream xstream = new XStream(new DomDriver());
         xstream.addPermission(AnyTypePermission.ANY);
         ObjectInputStream is = xstream.createObjectInputStream(new FileReader("../data/" + filename));
         ArrayList<Object> data = (ArrayList<Object>) is.readObject();
+        is.close();
+        return data;
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T> Object loadObject(String filename) throws Exception {
+        XStream xstream = new XStream(new DomDriver());
+        xstream.addPermission(AnyTypePermission.ANY);
+        ObjectInputStream is = xstream.createObjectInputStream(new FileReader(filename));
+        T data = (T) is.readObject();
         is.close();
         return data;
     }
