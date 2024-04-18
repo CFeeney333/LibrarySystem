@@ -801,7 +801,30 @@ public class LibrarySystem {
      */
     private static void deleteBook() {
         final String HEADING = "DELETE BOOK";
-        d.showMessage(HEADING, "Not yet implemented!");
+        ArrayList<Book> searchResult;
+        do {
+            Book selection;
+            // search for and select a book
+            searchResult = searchBooks(HEADING);
+            if (searchResult == null) {
+                return;  // the user wants to go back to the main menu
+            }
+            if (searchResult.isEmpty()) {
+                d.showMessage(HEADING, "No books found!");
+                continue;
+            } else {
+                String[] options = new String[searchResult.size()];
+                for (int i = 0; i < searchResult.size(); i++) {
+                    options[i] = LibraryUtils.bookListItem(searchResult.get(i));
+                }
+                selection = searchResult.get(d.showOptions(HEADING, "Choose a book:\n", options) - 1);
+            }
+
+            if (d.showConfirm(HEADING, "Are you sure you want to delete the following book from the system?\n" + LibraryUtils.bookListItem(selection)) == 0) {
+                l.removeBook(selection);
+                d.showMessage(HEADING, "Book removed");
+            }
+        } while (true);
     }
 
     /**
