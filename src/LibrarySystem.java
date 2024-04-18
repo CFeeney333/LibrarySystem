@@ -3,6 +3,7 @@ import utilities.LibraryUtils;
 import view.CLDisplay;
 import view.Display;
 
+import java.sql.Array;
 import java.util.ArrayList;
 
 /**
@@ -531,6 +532,93 @@ public class LibrarySystem {
                     return;
             }
         } while (true);
+    }
+
+    /**
+     * A helper method for searching for books, giving the user the option of various search methods
+     *
+     * @param heading the heading to use for the display
+     * @return an ArrayList with the search results of all the staff matching the user's search criteria or null if the user opted to go back
+     */
+    private static ArrayList<Book> searchBooks(String heading) {
+        ArrayList<Book> searchResult = null;
+        switch (d.showOptions(heading, "Choose a search method", new String[]{
+                "All",
+                "Find by ISBN",
+                "Find by Title",
+                "Find by Author",
+                "Find by Page count",
+                "Find by Illustrated",
+                "Find books currently in library",
+                "<- Back"
+        })) {
+            case 1:
+                searchResult = l.getAllBooks();
+                break;
+            case 2:
+                long isbn = 0L;
+                boolean invalidISBN = false;
+                do {
+                    String input = d.showInput(heading, "What ISBN do you want to search for?", false);
+                    try {
+                        isbn = Long.parseLong(input);
+                    } catch (NumberFormatException e) {
+                        d.showMessage(heading, "Invalid ISBN number!");
+                        invalidISBN = true;
+                    }
+                    if (isbn <= 0) {
+                        d.showMessage(heading, "ISBN can not be negative!");
+                        invalidISBN = true;
+                    }
+                } while (d.showConfirm(heading, "Try again?") == 1);
+                if (invalidISBN) {
+                    return new ArrayList<Book>();  // don't go back to the main menu, but just say that no books were found if an invalid isbn was given
+                }
+                break;
+            case 3:
+                String title = d.showInput(heading, "What title do you want to search for? ", false);
+                searchResult = l.getBookByTitle(title);
+                break;
+            case 4:
+                String author = d.showInput(heading, "What author do you want to search for? ", false);
+                searchResult = l.getBookByAuthor(author);
+                break;
+            case 5:
+                int pages = 0;
+                boolean invalidPages = false;
+                do {
+                    String input = d.showInput(heading, "How many pages are in the book you are searching for?", false);
+                    try {
+                        pages = Integer.parseInt(input);
+                    } catch (NumberFormatException e) {
+                        d.showMessage(heading, "Invalid page number!");
+                        invalidPages = true;
+                    }
+                    if (pages <= 0) {
+                        d.showMessage(heading, "Page number can not be negative!");
+                        invalidPages = true;
+                    }
+                } while (d.showConfirm(heading, "Try again?") == 1);
+                if (invalidPages) {
+                    return new ArrayList<Book>();  // as above, don't go back to the main menu, just say that no books were found
+                }
+                break;
+            case 6:
+                searchResult = d.showOptions(heading, "Which do you want to retrieve?", new String[]{
+                        "Illustrated books",
+                        "Non-Illustrated books"
+                }) == 1 ? l.getBooksByIsIllustrated(true) : l.getBooksByIsIllustrated(false);
+                break;
+            case 7:
+                searchResult = d.showOptions(heading, "Which do you want to retrieve?", new String[]{
+                        "Books in library",
+                        "Books on loan"
+                }) == 1 ? l.getBooksByInLibrary(true) : l.getBooksByInLibrary(false);
+                break;
+            case 8:
+                return null;
+        }
+        return searchResult;
     }
 
     /**
