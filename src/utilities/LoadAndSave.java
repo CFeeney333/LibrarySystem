@@ -11,7 +11,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class LoadAndSave {
-    public static <T> void saveObject(String filename, ArrayList<T> data) throws Exception {
+    public static <T> void save(String filename, ArrayList<T> data) throws Exception {
         XStream xstream = new XStream(new DomDriver());
         ObjectOutputStream out = xstream.createObjectOutputStream(new FileWriter(filename));
         out.writeObject(data);
