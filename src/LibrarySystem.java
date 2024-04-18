@@ -504,8 +504,68 @@ public class LibrarySystem {
         } while (true);
     }
 
+    /**
+     * The main menu for book crud functionality
+     */
     private static void manageBooks() {
-        d.showMessage("MANAGE BOOKS", "Not yet implemented!");
+        do {
+            int option = d.showOptions("MEMBER MANAGEMENT", "Choose an option", new String[]{
+                    "Add Book",
+                    "Display Books",
+                    "Update Book",
+                    "Delete Book",
+                    "<- Back to Main Menu"
+            });
+
+            switch (option) {
+                case 1:
+                    addBook();
+                    break;
+                case 2:
+                    displayBooks();
+                    break;
+                case 3:
+                    updateBook();
+                    break;
+                case 4:
+                    deleteBook();
+                    break;
+                case 5:
+                    return;
+            }
+        } while (true);
+    }
+
+    /**
+     * Menu to add a Book to the system
+     */
+    private static void addBook() {
+        final String HEADING = "ADD BOOK";
+        d.showMessage(HEADING, "Not yet implemented!");
+    }
+
+    /**
+     * Menu to display the Books in the system based on a search selection
+     */
+    private static void displayBooks() {
+        final String HEADING = "DISPLAY BOOKS";
+        d.showMessage(HEADING, "Not yet implemented!");
+    }
+
+    /**
+     * Menu to update Books in the system based on a search selection
+     */
+    private static void updateBook() {
+        final String HEADING = "UPDATE BOOK";
+        d.showMessage(HEADING, "Not yet implemented!");
+    }
+
+    /**
+     * Menu to delete a Book from the system based on a search selection
+     */
+    private static void deleteBook() {
+        final String HEADING = "DELETE BOOK";
+        d.showMessage(HEADING, "Not yet implemented!");
     }
 
     /**
