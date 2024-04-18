@@ -1,7 +1,6 @@
 package utilities;
 
-import entities.Member;
-import entities.Staff;
+import entities.Book;
 import entities.User;
 
 import java.util.ArrayList;
@@ -32,6 +31,21 @@ public class LibraryUtils {
     }
 
     /**
+     * Create a nice readable representation of an ArrayList of Books
+     *
+     * @param bookArrayList the arraylist of books to display
+     * @return a String list of readable (format) Books
+     */
+    public static String orderedBookList(ArrayList<Book> bookArrayList) {
+        StringBuilder list = new StringBuilder();
+        for (int i = 0; i < bookArrayList.size(); i++) {
+            Book b = bookArrayList.get(i);
+            list.append(i + 1).append(":").append(bookListItem(b));
+        }
+        return list.toString();
+    }
+
+    /**
      * Create a nice readable representation of a user
      *
      * <p>
@@ -50,5 +64,20 @@ public class LibraryUtils {
                 "\t\tUsername: " + user.getUserName() + "\n" +
                 "\t\tPhone Number: " + user.getPhone() + "\n" +
                 "\t\tEmail: " + user.getEmail() + "\n";
+    }
+
+    /**
+     * Create a nice readable representation of a book
+     *
+     * @param book the book to get the data from
+     * @return a readable String representation of a book
+     */
+    public static String bookListItem(Book book) {
+        return "\t\tISBN: " + book.getIsbn() + "\n" +
+                "\t\tTitle: " + book.getTitle() + "\n" +
+                "\t\tAuthor: " + book.getAuthor() + "\n" +
+                "\t\tPages: " + book.getPages() + "\n" +
+                "\t\tIllustrated: " + book.isIllustrated() + "\n" +
+                "\t\tIn Library: " + book.isInLibrary() + "\n";
     }
 }
