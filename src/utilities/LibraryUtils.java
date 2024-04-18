@@ -45,6 +45,10 @@ public class LibraryUtils {
      * @return a String representation of the User
      */
     public static <T extends User> String userListItem(T user) {
-        return "\t\tID: " + user.getId() + "\n" + "\t\tName: " + user.getFirstName() + " " + user.getLastName() + "\n" + "\t\tUsername: " + user.getUserName() + "\n" + "\t\tPhone Number: " + user.getPhone() + "\n" + "\t\tEmail: " + user.getEmail() + "\n";
+        return "\t\tID: " + user.getId() + "\n" +
+                "\t\tName: " + user.getFirstName() + " " + user.getLastName() + "\n" +
+                "\t\tUsername: " + user.getUserName() + "\n" +
+                "\t\tPhone Number: " + user.getPhone() + "\n" +
+                "\t\tEmail: " + user.getEmail() + "\n";
     }
 }
