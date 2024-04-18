@@ -368,7 +368,7 @@ public class LibrarySystem {
             if (searchResult.isEmpty()) {
                 d.showMessage(HEADING, "No staff found!");
             } else {
-                d.showMessage(HEADING, "Search Results:\n" + LibraryUtils.orderedStaffList(searchResult));
+                d.showMessage(HEADING, "Search Results:\n" + LibraryUtils.orderedUserList(searchResult));
             }
         } while (true);
     }
@@ -392,7 +392,7 @@ public class LibrarySystem {
             } else {
                 String[] options = new String[searchResult.size()];
                 for (int i = 0; i < searchResult.size(); i++) {
-                    options[i] = LibraryUtils.staffListItem(searchResult.get(i));
+                    options[i] = LibraryUtils.userListItem(searchResult.get(i));
                 }
                 selection = searchResult.get(d.showOptions(HEADING, "Choose a staff user:\n", options) - 1);  // take away one to represent the index
             }
@@ -464,7 +464,7 @@ public class LibrarySystem {
                 }
                 if (keepUpdating) {
                     if (d.showConfirm(HEADING, "Do you want to update another property?") == 1) {
-                        d.showMessage(HEADING, "Updated Staff User\n" + LibraryUtils.staffListItem(selection));
+                        d.showMessage(HEADING, "Updated Staff User\n" + LibraryUtils.userListItem(selection));
                         keepUpdating = false;
                     }
                 }
@@ -491,12 +491,12 @@ public class LibrarySystem {
             } else {
                 String[] options = new String[searchResult.size()];
                 for (int i = 0; i < searchResult.size(); i++) {
-                    options[i] = LibraryUtils.staffListItem(searchResult.get(i));
+                    options[i] = LibraryUtils.userListItem(searchResult.get(i));
                 }
                 selection = searchResult.get(d.showOptions(HEADING, "Choose a staff member:\n", options) - 1);  // take away one to represent the index
             }
 
-            if (d.showConfirm(HEADING, "Are you sure you want to delete the following staff member from the system?\n" + LibraryUtils.staffListItem(selection)) == 0) {
+            if (d.showConfirm(HEADING, "Are you sure you want to delete the following staff member from the system?\n" + LibraryUtils.userListItem(selection)) == 0) {
                 l.removeStaff(selection);
                 d.showMessage(HEADING, "Staff member removed");
             }
@@ -657,7 +657,7 @@ public class LibrarySystem {
             if (searchResult.isEmpty()) {
                 d.showMessage(HEADING, "No members found!");
             } else {
-                d.showMessage(HEADING, "Search Results:\n" + LibraryUtils.orderedMemberList(searchResult));
+                d.showMessage(HEADING, "Search Results:\n" + LibraryUtils.orderedUserList(searchResult));
             }
         } while (true);
     }
@@ -681,7 +681,7 @@ public class LibrarySystem {
             } else {
                 String[] options = new String[searchResult.size()];
                 for (int i = 0; i < searchResult.size(); i++) {
-                    options[i] = LibraryUtils.memberListItem(searchResult.get(i));
+                    options[i] = LibraryUtils.userListItem(searchResult.get(i));
                 }
                 selection = searchResult.get(d.showOptions(HEADING, "Choose a member:\n", options));
             }
@@ -744,7 +744,7 @@ public class LibrarySystem {
                 }
                 if (keepUpdating) {
                     if (d.showConfirm(HEADING, "Do you want to update another property?") == 1) {
-                        d.showMessage(HEADING, "Updated Member\n" + LibraryUtils.memberListItem(selection));
+                        d.showMessage(HEADING, "Updated Member\n" + LibraryUtils.userListItem(selection));
                         keepUpdating = false;
                     }
                 }

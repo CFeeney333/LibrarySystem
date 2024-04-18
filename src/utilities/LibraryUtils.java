@@ -2,6 +2,7 @@ package utilities;
 
 import entities.Member;
 import entities.Staff;
+import entities.User;
 
 import java.util.ArrayList;
 
@@ -11,81 +12,39 @@ import java.util.ArrayList;
 public class LibraryUtils {
 
     /**
-     * Create a nice readable representation of an ArrayList of Staff users
+     * Create a nice readable representation of an ArrayList of users
      *
      * <p>
-     * Uses the staffListItem method to create a nice readable String representation of an ArrayList of Staff users
+     * Uses the userListItem method to create a nice readable String representation of an ArrayList of Users
      * </p>
      *
-     * @param staffArrayList the ArrayList of staff users to make a list of
-     * @return the String representation of the ArrayList
+     * @param userArrayList the arrayList of objects that extend the User class
+     * @param <T>           the user abstract class
+     * @return a String list of readable Users
      */
-    public static String orderedStaffList(ArrayList<Staff> staffArrayList) {
+    public static <T extends User> String orderedUserList(ArrayList<T> userArrayList) {
         StringBuilder list = new StringBuilder();
-        for (int i = 0; i < staffArrayList.size(); i++) {
-            Staff s = staffArrayList.get(i);
-            list.append(i + 1).append(":").append(staffListItem(s));
+        for (int i = 0; i < userArrayList.size(); i++) {
+            T u = userArrayList.get(i);
+            list.append(i + 1).append(":").append(userListItem(u));
         }
         return list.toString();
     }
 
     /**
-     * Create a nice readable representation of an ArrayList of Member users
+     * Create a nice readable representation of a user
      *
      * <p>
-     * Users the memberListItem method to create a nice readable String representation of an ArrayList of Member users
-     * </p>
-     *
-     * @param memberArrayList the ArrayList of member users to make a list of
-     * @return the String representation of the ArrayList
-     */
-    public static String orderedMemberList(ArrayList<Member> memberArrayList) {
-        StringBuilder list = new StringBuilder();
-        for (int i = 0; i < memberArrayList.size(); i++) {
-            Member m = memberArrayList.get(i);
-            list.append(i + 1).append(":").append(memberListItem(m));
-        }
-        return list.toString();
-    }
-
-    /**
-     * Create a nice readable representation of a Staff user
-     *
-     * <p>
-     * This method creates a nice readable String representation of a Staff user for display in the system. It
+     * This method creates a nice readable String representation of any user for display in the system. It
      * intentionally does not include the password in the output, and the first name and last name are joined to make
      * the full name
      * </p>
      *
-     * @param staff the staff user to get the String representation of
-     * @return the String representation of the staff user
+     * @param user the user to get the representation of
+     * @param <T>  any class the extends the User abstract class, e.g. Member, Staff
+     * @return a String representation of the User
      */
-    public static String staffListItem(Staff staff) {
-        return "\t\tID: " + staff.getId() + "\n" +
-                "\t\tName: " + staff.getFirstName() + " " + staff.getLastName() + "\n" +
-                "\t\tUsername: " + staff.getUserName() + "\n" +
-                "\t\tPhone Number: " + staff.getPhone() + "\n" +
-                "\t\tEmail: " + staff.getEmail() + "\n";
-    }
-
-    /**
-     * Create a nice readable representation of a member user
-     *
-     * <p>
-     * This method creates a nice readable String representation of a Member user for display in the system. It
-     * intentionally does not include the password in the output, and the first name and last name are joined to make
-     * the full name
-     * </p>
-     *
-     * @param member the member user to get the String representation of
-     * @return the String representation of the member user
-     */
-    public static String memberListItem(Member member) {
-        return "\t\tID: " + member.getId() + "\n" +
-                "\t\tName: " + member.getFirstName() + " " + member.getLastName() + "\n" +
-                "\t\tUsername: " + member.getUserName() + "\n" +
-                "\t\tPhone Number: " + member.getPhone() + "\n" +
-                "\t\tEmail: " + member.getEmail() + "\n";
-
+    public static <T extends User> String userListItem(T user) {
+        return "\t\tID: " + user.getId() + "\n" + "\t\tName: " + user.getFirstName() + " " + user.getLastName() + "\n" + "\t\tUsername: " + user.getUserName() + "\n" + "\t\tPhone Number: " + user.getPhone() + "\n" + "\t\tEmail: " + user.getEmail() + "\n";
     }
 }
