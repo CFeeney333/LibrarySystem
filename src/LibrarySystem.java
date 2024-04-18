@@ -687,7 +687,18 @@ public class LibrarySystem {
      */
     private static void displayBooks() {
         final String HEADING = "DISPLAY BOOKS";
-        d.showMessage(HEADING, "Not yet implemented!");
+        ArrayList<Book> searchResult;
+        do {
+            searchResult = searchBooks(HEADING);
+            if (searchResult == null) {
+                return;
+            }
+            if (searchResult.isEmpty()) {
+                d.showMessage(HEADING, "No books found!");
+            } else {
+                d.showMessage(HEADING, "Search Results:\n" + LibraryUtils.orderedBookList(searchResult));
+            }
+        } while (true);
     }
 
     /**
