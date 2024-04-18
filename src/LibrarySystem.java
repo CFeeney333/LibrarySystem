@@ -473,14 +473,14 @@ public class LibrarySystem {
     }
 
     /**
-     * Menu to delete a Staff member based on a search selection
+     * Menu to delete a Staff user based on a search selection
      */
     private static void deleteStaff() {
         final String HEADING = "DELETE STAFF";
         ArrayList<Staff> searchResult;
         do {
             Staff selection;
-            // search for and select a staff member
+            // search for and select a staff user
             searchResult = searchStaff(HEADING);
             if (searchResult == null) {
                 return;  // the user wants to go back to the main menu
@@ -493,12 +493,12 @@ public class LibrarySystem {
                 for (int i = 0; i < searchResult.size(); i++) {
                     options[i] = LibraryUtils.userListItem(searchResult.get(i));
                 }
-                selection = searchResult.get(d.showOptions(HEADING, "Choose a staff member:\n", options) - 1);  // take away one to represent the index
+                selection = searchResult.get(d.showOptions(HEADING, "Choose a staff user:\n", options) - 1);  // take away one to represent the index
             }
 
-            if (d.showConfirm(HEADING, "Are you sure you want to delete the following staff member from the system?\n" + LibraryUtils.userListItem(selection)) == 0) {
+            if (d.showConfirm(HEADING, "Are you sure you want to delete the following staff user from the system?\n" + LibraryUtils.userListItem(selection)) == 0) {
                 l.removeStaff(selection);
-                d.showMessage(HEADING, "Staff member removed");
+                d.showMessage(HEADING, "Staff user removed");
             }
         } while (true);
     }
