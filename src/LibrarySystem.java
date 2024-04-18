@@ -19,6 +19,7 @@ public class LibrarySystem {
     public static void main(String[] args) {
         // Add placeholder staff user
         l.addStaff(new Staff(1111, "Tom", "Dwyer", "tdwyer", "pwd", "089 123 4567", "t.dwyer@lib.ie"));
+        l.addMember(new Member(1234, "Jim", "Fallon", "JFallon", "pwd", "044 324 5534", "jfallon@gmail.com"));
 
         d.showMessage("LIBRARY MANAGEMENT SYSTEM",
                 """
