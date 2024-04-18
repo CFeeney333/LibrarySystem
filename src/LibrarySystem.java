@@ -538,4 +538,23 @@ public class LibrarySystem {
             }
         } while (true);
     }
+    private static void addMember() {
+        final String HEADING = "ADD MEMBER";
+        d.showMessage(HEADING, "Not yet implemented!");
+    }
+
+    private static void displayMember() {
+        final String HEADING = "DISPLAY MEMBER";
+        d.showMessage(HEADING, "Not yet implemented!");
+    }
+
+    private static void updateMember() {
+        final String HEADING = "UPDATE MEMBER";
+        d.showMessage(HEADING, "Not yet implemented!");
+    }
+
+    private static void deleteMember() {
+        final String HEADING = "DELETE MEMBER";
+        d.showMessage(HEADING, "Not yet implemented!");
+    }
 }
