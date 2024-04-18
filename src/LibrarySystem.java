@@ -538,6 +538,54 @@ public class LibrarySystem {
             }
         } while (true);
     }
+
+    /**
+     * A helper method for searching for members, giving the user the option of various search methods
+     *
+     * @param heading the heading to use for the display
+     * @return an ArrayList with the search results of all the staff matching the user's search criteria or null if the user opted to go back
+     */
+    private static ArrayList<Member> searchMembers(String heading) {
+        ArrayList<Member> searchResult = null;
+        switch (d.showOptions(heading, "Choose a search method", new String[]{
+                // TODO 18/04/2024: Add way to search by id, also for searching staff
+                "All",
+                "Find by First Name",
+                "Find by Last Name",
+                "Find by Username",
+                "Find by Phone Number",
+                "Find by Email Address",
+                "<- Back"
+        })) {
+            case 1:
+                searchResult = l.getAllMembers();
+                break;
+            case 2:
+                String firstName = d.showInput(heading, "What first name do you want to search for? ", false);
+                searchResult = l.getMemberByFirstName(firstName);
+                break;
+            case 3:
+                String lastName = d.showInput(heading, "What last name do you want to search for? ", false);
+                searchResult = l.getMemberByLastName(lastName);
+                break;
+            case 4:
+                String userName = d.showInput(heading, "What username do you want to search for? ", false);
+                searchResult = l.getMemberByUserName(userName);
+                break;
+            case 5:
+                String phone = d.showInput(heading, "What phone number do you want to search for? ", false);
+                searchResult = l.getMemberByPhoneNumber(phone);
+                break;
+            case 6:
+                String email = d.showInput(heading, "What email address do  you want to search for? ", false);
+                searchResult = l.getMemberByEmail(email);
+                break;
+            case 7:
+                return null;
+        }
+        return searchResult;
+    }
+
     private static void addMember() {
         final String HEADING = "ADD MEMBER";
         d.showMessage(HEADING, "Not yet implemented!");
