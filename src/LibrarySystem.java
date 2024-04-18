@@ -428,7 +428,7 @@ public class LibrarySystem {
                             // if the id is already in use by a staff user, it can't be used again
                             if (!l.getStaffByID(id).isEmpty()) {
                                 invalid = true;
-                                d.showMessage(HEADING, "Staff with ID " + id + " already exists!. Please enter a unique id");
+                                d.showMessage(HEADING, "Staff with ID " + id + " already exists! Please enter a unique id");
                             }
 
                         } while (invalid);
