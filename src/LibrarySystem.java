@@ -752,8 +752,34 @@ public class LibrarySystem {
         } while (true);
     }
 
+    /**
+     * Menu to delete a Member user based on a search selection
+     */
     private static void deleteMember() {
         final String HEADING = "DELETE MEMBER";
-        d.showMessage(HEADING, "Not yet implemented!");
+        ArrayList<Member> searchResult;
+        do {
+            Member selection;
+            // search for and select a member user
+            searchResult = searchMembers(HEADING);
+            if (searchResult == null) {
+                return;  // the user wants to go back to the main menu
+            }
+            if (searchResult.isEmpty()) {
+                d.showMessage(HEADING, "No members found!");
+                continue;
+            } else {
+                String[] options = new String[searchResult.size()];
+                for (int i = 0; i < searchResult.size(); i++) {
+                    options[i] = LibraryUtils.userListItem(searchResult.get(i));
+                }
+                selection = searchResult.get(d.showOptions(HEADING, "Choose a member:\n", options) - 1);  //  take away one to represent the index
+            }
+
+            if (d.showConfirm(HEADING, "Are you sure you want to delete the following member from the system?\n" + LibraryUtils.userListItem(selection)) == 0) {
+                l.removeMember(selection);
+                d.showMessage(HEADING, "Member removed");
+            }
+        } while (true);
     }
 }
