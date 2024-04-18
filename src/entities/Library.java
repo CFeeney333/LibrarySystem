@@ -261,16 +261,31 @@ public class Library {
         return withEmail;
     }
 
+    /**
+     * Get a copy of all the staff users
+     *
+     * @return an arraylist of all staff users
+     */
     @SuppressWarnings("unchecked")
     public ArrayList<Staff> getAllStaff() {
         return (ArrayList<Staff>) staff.clone();
     }
 
+    /**
+     * Get a copy of all the member users
+     *
+     * @return an arraylist of all member users
+     */
     @SuppressWarnings("unchecked")
     public ArrayList<Member> getAllMembers() {
         return (ArrayList<Member>) members.clone();
     }
 
+    /**
+     * Get a copy of all the books
+     *
+     * @return an arraylist of all the books
+     */
     @SuppressWarnings("unchecked")
     public ArrayList<Book> getAllBooks() {
         return (ArrayList<Book>) books.clone();
