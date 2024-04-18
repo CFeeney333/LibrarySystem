@@ -1,8 +1,6 @@
 package view;
 import utilities.Console;
 
-import java.util.InputMismatchException;
-
 public class CLDisplay implements Display {
 
     /**

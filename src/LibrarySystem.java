@@ -761,7 +761,7 @@ public class LibrarySystem {
                         selection.setAuthor(d.showInput(HEADING, "Enter new value for Author\nCurrent value: " + selection.getAuthor(), false));
                         break;
                     case 4:
-                        boolean invalidPages = false;
+                        boolean invalidPages;
                         int pages = 0;
                         // TODO 18/04/24: As above, create a utility method for validating this
                         do {
@@ -777,10 +777,10 @@ public class LibrarySystem {
                         selection.setPages(pages);
                         break;
                     case 5:
-                        boolean isIllustrated = d.showConfirm(HEADING, "Is the book illustrated?\nCurrent value: " + selection.isIllustrated()) == 0;
+                        selection.setIllustrated(d.showConfirm(HEADING, "Is the book illustrated?\nCurrent value: " + selection.isIllustrated()) == 0);
                         break;
                     case 6:
-                        boolean isInLibrary = d.showConfirm(HEADING, "Is the book in the library?\nCurrent value: " + selection.isInLibrary()) == 0;
+                        selection.setInLibrary(d.showConfirm(HEADING, "Is the book in the library?\nCurrent value: " + selection.isInLibrary()) == 0);
                         break;
                     case 7:
                         keepUpdating = false;
