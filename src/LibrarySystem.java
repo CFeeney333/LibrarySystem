@@ -643,9 +643,23 @@ public class LibrarySystem {
         } while (true);
     }
 
+    /**
+     * Menu to display Member users based on a search selection
+     */
     private static void displayMember() {
         final String HEADING = "DISPLAY MEMBER";
-        d.showMessage(HEADING, "Not yet implemented!");
+        ArrayList<Member> searchResult;
+        do {
+            searchResult = searchMembers(HEADING);
+            if (searchResult == null) {
+                return;
+            }
+            if (searchResult.isEmpty()) {
+                d.showMessage(HEADING, "No members found!");
+            } else {
+                d.showMessage(HEADING, "Search Results:\n" + LibraryUtils.orderedMemberList(searchResult));
+            }
+        } while (true);
     }
 
     private static void updateMember() {
