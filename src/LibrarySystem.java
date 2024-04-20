@@ -601,8 +601,11 @@ public class LibrarySystem {
             }
 
             if (d.showConfirm(HEADING, "Are you sure you want to delete the following staff user from the system?\n" + LibraryUtils.userListItem(selection)) == 0) {
-                l.removeStaff(selection);
-                d.showMessage(HEADING, "Staff user removed");
+                if (l.removeStaff(selection)) {
+                    d.showMessage(HEADING, "Staff user removed");
+                } else {
+                    d.showMessage(HEADING, "Warning! Staff not found");
+                }
             }
         } while (true);
     }
@@ -927,8 +930,11 @@ public class LibrarySystem {
             }
 
             if (d.showConfirm(HEADING, "Are you sure you want to delete the following book from the system?\n" + LibraryUtils.bookListItem(selection)) == 0) {
-                l.removeBook(selection);
-                d.showMessage(HEADING, "Book removed");
+                if (l.removeBook(selection))
+                    d.showMessage(HEADING, "Book removed");
+                else {
+                    d.showMessage(HEADING, "Warning! Book not found");
+                }
             }
         } while (true);
     }
@@ -1195,8 +1201,11 @@ public class LibrarySystem {
             }
 
             if (d.showConfirm(HEADING, "Are you sure you want to delete the following member from the system?\n" + LibraryUtils.userListItem(selection)) == 0) {
-                l.removeMember(selection);
-                d.showMessage(HEADING, "Member removed");
+                if (l.removeMember(selection)) {
+                    d.showMessage(HEADING, "Member user removed");
+                } else {
+                    d.showMessage(HEADING, "Warning! Member not found");
+                }
             }
         } while (true);
     }
