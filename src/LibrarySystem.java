@@ -291,6 +291,32 @@ public class LibrarySystem {
     }
 
     /**
+     * Method to manage an account, giving the user options to change their username and password
+     *
+     * @param account any user that extends BasicUser has an account
+     */
+    private static void manageAccount(BasicUser account) {
+        final String HEADING = "MANAGE ACCOUNT";
+        do {
+            int option = d.showOptions(HEADING, "Choose an option", new String[]{
+                    "Change username",
+                    "Change password",
+                    "<- Back to Main Menu"
+            });
+            switch (option) {
+                case 1:
+                    d.showMessage("CHANGE USERNAME", "Not yet implemented!");
+                    break;
+                case 2:
+                    d.showMessage("CHANGE PASSWORD", "Not yet implemented!");
+                    break;
+                case 3:
+                    return;
+            }
+        } while (true);
+    }
+
+    /**
      * The main menu for staff crud functionality
      */
     private static void manageStaff() {
