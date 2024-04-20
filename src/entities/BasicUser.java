@@ -1,6 +1,6 @@
 package entities;
 
-abstract class BasicUser {
+public abstract class BasicUser {
 
     /**
      * The account associated with the user
