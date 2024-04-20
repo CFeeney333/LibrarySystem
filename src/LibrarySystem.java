@@ -523,8 +523,6 @@ public class LibrarySystem {
                                 "ID",
                                 "First Name",
                                 "Last Name",
-                                "Username",
-                                "Password",
                                 "Phone Number",
                                 "Email Address",
                                 "<- Back"
@@ -559,24 +557,12 @@ public class LibrarySystem {
                         selection.setLastName(d.showInput(HEADING, "Enter new value for Last name\nCurrent value: " + selection.getLastName(), false));
                         break;
                     case 4:
-                        selection.setUserName(d.showInput(HEADING, "Enter new Username\nCurrent value: " + selection.getUserName(), false));
-                        break;
-                    case 5:
-                        String pwdAttempt = d.showInput(HEADING, "Please enter current Password", false);
-                        if (pwdAttempt.equals(selection.getPassword())) {
-                            // now we can change the password
-                            selection.setPassword(d.showInput(HEADING, "Enter new Password", false));
-                        } else {
-                            d.showMessage(HEADING, "Incorrect password!");
-                        }
-                        break;
-                    case 6:
                         selection.setPhone(d.showInput(HEADING, "Enter new Phone Number\nCurrent value: " + selection.getPhone(), false));
                         break;
-                    case 7:
+                    case 5:
                         selection.setEmail(d.showInput(HEADING, "Enter new Email Address\nCurrent value: " + selection.getEmail(), false));
                         break;
-                    case 8:
+                    case 6:
                         keepUpdating = false;
                         break;
                 }
@@ -1134,8 +1120,6 @@ public class LibrarySystem {
                                 "ID",
                                 "First Name",
                                 "Last Name",
-                                "Username",
-                                "Password",
                                 "Phone Number",
                                 "Email Address",
                                 "<- Back"
@@ -1168,19 +1152,7 @@ public class LibrarySystem {
                     case 3:
                         selection.setLastName(d.showInput(HEADING, "Enter new value for Last name\nCurrent value: " + selection.getLastName(), false));
                         break;
-                    case 4:
-                        selection.setUserName(d.showInput(HEADING, "Enter new value for Username\nCurrent value: " + selection.getUserName(), false));
-                        break;
-                    case 5:
-                        // TODO 18/04/2024: Make username and password only changeable by the member in manage account and same for the staff member and admin
-                        String pwdAttempt = d.showInput(HEADING, "Please enter current Password", false);
-                        if (pwdAttempt.equals(selection.getPassword())) {
-                            // now we can change the password
-                            selection.setPassword(d.showInput(HEADING, "Enter new Password", false));
-                        } else {
-                            d.showMessage(HEADING, "Incorrect Password!");
-                        }
-                        break;
+                    // TODO 20/04/2024: Phone and email menu options are not implemented for Member!!!
                 }
                 if (d.showConfirm(HEADING, "Do you want to update another property?") == 1) {
                     d.showMessage(HEADING, "Updated Member\n" + LibraryUtils.userListItem(selection));
