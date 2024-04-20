@@ -317,6 +317,27 @@ public class LibrarySystem {
     }
 
     /**
+     * Method to change the password of a Basic User account
+     *
+     * @param account the account to change the password of
+     */
+    private static void changePassword(BasicUser account) {
+        final String HEADING = "CHANGE PASSWORD";
+        String pwdAttempt;
+        while (true) {
+            pwdAttempt = d.showInput(HEADING, "Please enter current Password", false);
+            if (pwdAttempt.equals(account.getPassword())) {
+                // now we can change the password
+                account.setPassword(d.showInput(HEADING, "Enter new Password", false));
+            } else {
+                if (d.showConfirm(HEADING, "Incorrect Password! Do you want to try again") == 1) {
+                    return;
+                }
+            }
+        }
+    }
+
+    /**
      * The main menu for staff crud functionality
      */
     private static void manageStaff() {
