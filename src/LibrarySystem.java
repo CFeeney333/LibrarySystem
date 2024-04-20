@@ -1152,7 +1152,15 @@ public class LibrarySystem {
                     case 3:
                         selection.setLastName(d.showInput(HEADING, "Enter new value for Last name\nCurrent value: " + selection.getLastName(), false));
                         break;
-                    // TODO 20/04/2024: Phone and email menu options are not implemented for Member!!!
+                    case 4:
+                        selection.setPhone(d.showInput(HEADING, "Enter new Phone Number\nCurrent value: " + selection.getPhone(), false));
+                        break;
+                    case 5:
+                        selection.setEmail(d.showInput(HEADING, "Enter new Email Address\nCurrent value: " + selection.getEmail(), false));
+                        break;
+                    case 6:
+                        keepUpdating = false;
+                        break;
                 }
                 if (d.showConfirm(HEADING, "Do you want to update another property?") == 1) {
                     d.showMessage(HEADING, "Updated Member\n" + LibraryUtils.userListItem(selection));
