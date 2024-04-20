@@ -22,15 +22,15 @@ public class Library {
     /**
      * The arraylist of books belonging to the library
      */
-    private ArrayList<Book> books = new ArrayList<>();
+    private final ArrayList<Book> books = new ArrayList<>();
     /**
      * The arraylist of library staff
      */
-    private ArrayList<Staff> staff = new ArrayList<>();
+    private final ArrayList<Staff> staff = new ArrayList<>();
     /**
      * The arraylist of members of the library
      */
-    private ArrayList<Member> members = new ArrayList<>();
+    private final ArrayList<Member> members = new ArrayList<>();
 
 
     /**

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 public class BookTest {
 
-    Book book = new Book("The Lord of the Rings", "J.R.R. Tolkien", 1234123412345L, 1234, false, true);
+    final Book book = new Book("The Lord of the Rings", "J.R.R. Tolkien", 1234123412345L, 1234, false, true);
 
     // Test constructors
     @Test

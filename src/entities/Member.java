@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class Member extends User {
 
-    private ArrayList<Book> borrowedBooks = new ArrayList<>();
+    private final ArrayList<Book> borrowedBooks = new ArrayList<>();
 
 
     /**
@@ -44,7 +44,8 @@ public class Member extends User {
     }
 
     @Override
-    protected Member clone() throws CloneNotSupportedException {
+    protected Member clone() {
+        Member member = (Member) super.clone();
         return new Member(getId(), getFirstName(), getLastName(), getUserName(), getPassword(), getPhone(), getEmail());
     }
 

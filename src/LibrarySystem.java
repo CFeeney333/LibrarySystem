@@ -15,7 +15,7 @@ public class LibrarySystem {
     private static final Library l = new Library("Luke Wadding Library", "");
     private static Admin a = null;
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
         // Try and load files
         ArrayList<String> unloaded = new ArrayList<>();
