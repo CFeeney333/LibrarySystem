@@ -220,7 +220,7 @@ public class LibrarySystem {
             // TODO 15/04/24: Save library details to file
             int option = d.showOptions("MAIN MENU", "Logged in as " + a.getUserName(), new String[]{
                     "Manage Staff",
-                    "Manage Password",
+                    "Change Password",
                     "Logout"
             });
 
@@ -229,7 +229,7 @@ public class LibrarySystem {
                     manageStaff();
                     break;
                 case 2:
-                    d.showMessage("MANAGE PASSWORD", "Not yet implemented!");
+                    changePassword(a);
                     break;
                 case 3:
                     loggedIn = false;
@@ -256,7 +256,7 @@ public class LibrarySystem {
                     manageBooks();
                     break;
                 case 3:
-                    d.showMessage("MANAGE STAFF ACCOUNT", "Not yet implemented!");
+                    manageAccount(s);
                     break;
                 case 4:
                     loggedIn = false;
@@ -282,7 +282,7 @@ public class LibrarySystem {
                     d.showMessage("RETURN BOOKS", "Not yet implemented!");
                     break;
                 case 3:
-                    d.showMessage("MANAGE MEMBER ACCOUNT", "Not yet implemented!");
+                    manageAccount(m);
                     break;
                 case 4:
                     return;
@@ -308,7 +308,7 @@ public class LibrarySystem {
                     d.showMessage("CHANGE USERNAME", "Not yet implemented!");
                     break;
                 case 2:
-                    d.showMessage("CHANGE PASSWORD", "Not yet implemented!");
+                    changePassword(account);
                     break;
                 case 3:
                     return;
