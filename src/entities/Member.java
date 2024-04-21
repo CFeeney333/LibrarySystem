@@ -43,6 +43,16 @@ public class Member extends User {
         return false;
     }
 
+    /**
+     * Get a copy of all the books that the Member has borrowed
+     *
+     * @return a copy of the arraylist of borrowed books
+     */
+    @SuppressWarnings("unchecked")
+    public ArrayList<Book> getBorrowedBooks() {
+        return (ArrayList<Book>) borrowedBooks.clone();
+    }
+
     @Override
     protected Member clone() throws CloneNotSupportedException {
         Member member = (Member) super.clone();
