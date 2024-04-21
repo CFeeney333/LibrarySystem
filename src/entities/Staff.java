@@ -24,7 +24,7 @@ public class Staff extends User {
     }
 
     @Override
-    protected Staff clone() {
+    protected Staff clone() throws CloneNotSupportedException {
         Staff staff = (Staff) super.clone();
         return new Staff(getId(), getFirstName(), getLastName(), getUserName(), getPassword(), getPhone(), getEmail());
     }

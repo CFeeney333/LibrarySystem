@@ -44,7 +44,7 @@ public class Member extends User {
     }
 
     @Override
-    protected Member clone() {
+    protected Member clone() throws CloneNotSupportedException {
         Member member = (Member) super.clone();
         return new Member(getId(), getFirstName(), getLastName(), getUserName(), getPassword(), getPhone(), getEmail());
     }

@@ -193,7 +193,7 @@ public class Book {
     }
 
     @Override
-    protected Object clone() {
+    protected Object clone() throws CloneNotSupportedException {
         Object o = super.clone();
         return new Book(title, author, isbn, pages, isIllustrated, inLibrary);
     }
