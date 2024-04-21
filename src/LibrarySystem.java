@@ -276,10 +276,10 @@ public class LibrarySystem {
 
             switch (option) {
                 case 1:
-                    borrowBook(m);
+                    borrowBooks(m);
                     break;
                 case 2:
-                    returnBook(m);
+                    returnBooks(m);
                     break;
                 case 3:
                     manageAccount(m);
