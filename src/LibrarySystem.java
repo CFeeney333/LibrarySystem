@@ -5,7 +5,7 @@ import view.Display;
 
 import java.util.ArrayList;
 
-import static utilities.LoadAndSave.*;
+import static utilities.PersistenceUtils.*;
 
 /**
  * This class simulates a Library System
@@ -15,6 +15,11 @@ public class LibrarySystem {
     private static final Library l = new Library("Luke Wadding Library", "");
     private static Admin a = null;
 
+    /**
+     * The main method
+     *
+     * @param args array of arguments from the command line
+     */
     public static void main(String[] args) {
 
         // Try and load files
@@ -100,6 +105,7 @@ public class LibrarySystem {
             }
         } while (keepRunning);
 
+        // save all the data
         if (d.showConfirm("SAVE", "Do you want to save before closing?") == 0) {
             ArrayList<String> unsaved = new ArrayList<>();
             try {
@@ -213,6 +219,9 @@ public class LibrarySystem {
         }
     }
 
+    /**
+     * Start the Admin user session
+     */
     private static void startAdminSession() {
         boolean loggedIn = true;
         do {
@@ -238,6 +247,11 @@ public class LibrarySystem {
         } while (loggedIn);
     }
 
+    /**
+     * Start a staff user session
+     *
+     * @param s the staff who is logged in
+     */
     private static void startStaffSession(Staff s) {
         boolean loggedIn = true;
         do {
@@ -265,6 +279,11 @@ public class LibrarySystem {
         } while (loggedIn);
     }
 
+    /**
+     * Start a member user session
+     *
+     * @param m the member who is logged in
+     */
     private static void startMemberSession(Member m) {
         do {
             int option = d.showOptions("MAIN MENU", "Logged in as " + m.getUserName(), new String[]{
@@ -290,6 +309,11 @@ public class LibrarySystem {
         } while (true);
     }
 
+    /**
+     * Menu to allow a member to borrow books from the library
+     *
+     * @param m the member who is borrowing the books
+     */
     private static void borrowBooks(Member m) {
         final String HEADING = "BORROW BOOKS";
         ArrayList<Book> searchResult;
@@ -333,6 +357,11 @@ public class LibrarySystem {
         } while (true);
     }
 
+    /**
+     * Menu to allow the member to return books
+     *
+     * @param m the member who is returning the books
+     */
     private static void returnBooks(Member m) {
         final String HEADING = "RETURN BOOKS";
         ArrayList<Book> books;

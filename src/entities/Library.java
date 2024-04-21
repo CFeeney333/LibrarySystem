@@ -360,6 +360,12 @@ public class Library {
         return withName;
     }
 
+    /**
+     * Return an arraylist of all members with a given password
+     *
+     * @param password the member password to search for
+     * @return an arraylist of all members with that password
+     */
     public ArrayList<Member> getMemberByPassword(String password) {
         ArrayList<Member> withPassword = new ArrayList<>();
         for (Member m : members) {
@@ -503,10 +509,8 @@ public class Library {
         }
         return booksInLibrary;
     }
-    // TODO 04/03/24: Give Members an arraylist of books that they have borrowed
+
     // TODO 04/03/24: Enable case insensitive searching
-    // TODO 04/03/24: Add an option to search in a given arraylist
-    // TODO 04/03/24: Remove the inLibrary method of the Book class
 
     @Override
     public String toString() {

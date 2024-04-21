@@ -68,6 +68,11 @@ public class Console {
         return input;
     }
 
+    /**
+     * Get the next line from the console
+     *
+     * @return the next line of text in the console
+     */
     public static String nextLine() {
         return sc.nextLine();
     }

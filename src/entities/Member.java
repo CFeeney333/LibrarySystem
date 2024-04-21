@@ -10,6 +10,9 @@ import java.util.ArrayList;
  */
 public class Member extends User {
 
+    /**
+     * An arraylist of all the books that the member currently has borrowed
+     */
     private final ArrayList<Book> borrowedBooks = new ArrayList<>();
 
 
@@ -31,10 +34,24 @@ public class Member extends User {
         super(id, firstName, lastName, userName, password, phone, email);
     }
 
+    /**
+     * Borrow a book from the library
+     *
+     * <p>Add this book to the member's list of books that they have borrowed</p>
+     *
+     * @param book the book to borrow from the library
+     */
     public void borrowBook(Book book) {
         borrowedBooks.add(book);
     }
 
+    /**
+     * Return a book to the library
+     * <p>Remove this book from the member's list of books that they have borrowed</p>
+     *
+     * @param book the book to return to the library
+     * @return true if the book was borrowed and has been removed, otherwise false
+     */
     public boolean returnBook(Book book) {
         if (borrowedBooks.contains(book)) {
             borrowedBooks.remove(book);
