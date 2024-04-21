@@ -290,14 +290,106 @@ public class LibrarySystem {
         } while (true);
     }
 
-    private static void borrowBook(Member m) {
+    private static void borrowBooks(Member m) {
         final String HEADING = "BORROW BOOKS";
-        d.showMessage(HEADING, "Not yet implemented!");
+        ArrayList<Book> searchResult;
+        do {
+            Book selection;
+            // Search for and select a book
+            searchResult = searchBooks(HEADING);
+            // Filter out the books that are not in the library
+
+            if (searchResult != null) {
+                searchResult.removeIf(b -> !b.isInLibrary());
+            }
+
+            if (searchResult == null) {
+                return;  // the user wants to go back to the main menu
+            }
+            if (searchResult.isEmpty()) {
+                d.showMessage(HEADING, "No books found!");
+                continue;
+            } else {
+                String[] options = new String[searchResult.size()];
+                for (int i = 0; i < searchResult.size(); i++) {
+                    options[i] = LibraryUtils.bookListItem(searchResult.get(i));
+                }
+                selection = searchResult.get(d.showOptions(HEADING, "Choose a book:\n", options) - 1);  // take away one to represent the index
+            }
+
+            if (!selection.isInLibrary()) {
+                if (d.showConfirm(HEADING, "Sorry! This book is not currently available!\nDo you want to search for another?") == 1) {
+                    return;
+                }
+            } else {
+                if (d.showConfirm(HEADING, "Take the following book from the library?\n\n" + LibraryUtils.bookListItem(selection)) == 0) {
+                    // very important!!! both of these
+                    m.borrowBook(selection);
+                    selection.setInLibrary(false);
+                } else {
+                    d.showMessage(HEADING, "Did not borrow the following book\n\n" + LibraryUtils.bookListItem(selection));
+                }
+            }
+        } while (true);
     }
 
-    private static void returnBook(Member m) {
+    private static void returnBooks(Member m) {
         final String HEADING = "RETURN BOOKS";
-        d.showMessage(HEADING, "Not yet implemented!");
+        ArrayList<Book> books;
+        do {
+            int option = d.showOptions(HEADING, "Choose an option:\n", new String[]{
+                    "Return one Book",
+                    "Return all Books",
+                    "<- Back to Main Menu"
+            });
+            switch (option) {
+                case 1:
+                    do {
+                        books = m.getBorrowedBooks();
+                        if (books.isEmpty()) {
+                            d.showMessage(HEADING, "You don't have any books borrowed!");
+                            break;
+                        }
+
+                        Book selection;
+                        String[] options = new String[books.size()];
+                        for (int i = 0; i < options.length; i++) {
+                            options[i] = LibraryUtils.bookListItem(books.get(i));
+                        }
+                        selection = books.get(d.showOptions(HEADING, "Choose a book:\n", options) - 1);
+                        if (m.returnBook(selection)) {
+                            // mark the book as being return to the library. Also, ^ remove it from the member's collection
+                            selection.setInLibrary(true);
+                            d.showMessage(HEADING, "The following book has been returned:\n\n" + LibraryUtils.bookListItem(selection));
+                        } else {
+                            d.showMessage(HEADING, "There was an error returning the book");
+                        }
+
+                        if (d.showConfirm(HEADING, "Return another book?") == 1) {
+                            break;
+                        }
+                    } while (true);
+                    break;
+                case 2:
+                    books = m.getBorrowedBooks();
+                    if (books.isEmpty()) {
+                        d.showMessage(HEADING, "You don't have any books borrowed!");
+                        return;
+                    }
+
+                    if (d.showConfirm(HEADING, "The following books will be returned:\n\n" + LibraryUtils.orderedBookList(books)) == 0) {
+                        for (Book b : books) {
+                            m.returnBook(b);
+                            b.setInLibrary(true);
+                        }
+                        d.showMessage(HEADING, "Books returned successfully");
+                    }
+
+                    break;
+                case 3:
+                    return;
+            }
+        } while (true);
     }
 
     /**
