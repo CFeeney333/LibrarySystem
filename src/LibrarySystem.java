@@ -431,6 +431,7 @@ public class LibrarySystem {
             if (pwdAttempt.equals(account.getPassword())) {
                 // now we can change the password
                 account.setPassword(d.showInput(HEADING, "Enter new Password", false));
+                return;
             } else {
                 if (d.showConfirm(HEADING, "Incorrect Password! Do you want to try again") == 1) {
                     return;
