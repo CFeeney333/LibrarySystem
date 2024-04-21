@@ -25,7 +25,7 @@ public class LibraryUtils {
         StringBuilder list = new StringBuilder();
         for (int i = 0; i < userArrayList.size(); i++) {
             T u = userArrayList.get(i);
-            list.append(i + 1).append(":").append(userListItem(u));
+            list.append(i + 1).append(":").append(userListItem(u)).append("\n");
         }
         return list.toString();
     }
@@ -40,7 +40,7 @@ public class LibraryUtils {
         StringBuilder list = new StringBuilder();
         for (int i = 0; i < bookArrayList.size(); i++) {
             Book b = bookArrayList.get(i);
-            list.append(i + 1).append(":").append(bookListItem(b));
+            list.append(i + 1).append(":").append(bookListItem(b)).append("\n");
         }
         return list.toString();
     }
