@@ -276,10 +276,10 @@ public class LibrarySystem {
 
             switch (option) {
                 case 1:
-                    d.showMessage("BORROW BOOKS", "Not yet implemented!");
+                    borrowBook(m);
                     break;
                 case 2:
-                    d.showMessage("RETURN BOOKS", "Not yet implemented!");
+                    returnBook(m);
                     break;
                 case 3:
                     manageAccount(m);
@@ -288,6 +288,16 @@ public class LibrarySystem {
                     return;
             }
         } while (true);
+    }
+
+    private static void borrowBook(Member m) {
+        final String HEADING = "BORROW BOOKS";
+        d.showMessage(HEADING, "Not yet implemented!");
+    }
+
+    private static void returnBook(Member m) {
+        final String HEADING = "RETURN BOOKS";
+        d.showMessage(HEADING, "Not yet implemented!");
     }
 
     /**
