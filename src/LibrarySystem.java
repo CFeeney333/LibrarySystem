@@ -407,7 +407,7 @@ public class LibrarySystem {
             });
             switch (option) {
                 case 1:
-                    d.showMessage("CHANGE USERNAME", "Not yet implemented!");
+                    changeUserName(account);
                     break;
                 case 2:
                     changePassword(account);
@@ -437,6 +437,18 @@ public class LibrarySystem {
                 }
             }
         }
+    }
+
+    /**
+     * Method to change the username of a Basic User account
+     *
+     * @param account the account to change the username of
+     */
+    private static void changeUserName(BasicUser account) {
+        final String HEADING = "CHANGE USERNAME";
+        String old = account.getUserName();
+        account.setUserName(d.showInput(HEADING, "Enter new Username", false));
+        d.showMessage(HEADING, "Changed username from " + old + " to " + account.getUserName());
     }
 
     /**
