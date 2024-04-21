@@ -1,0 +1,20 @@
+<object-stream>
+  <list>
+    <entities.Book>
+      <title>The Lord of the Rings</title>
+      <author>JRR Tolkien</author>
+      <isbn>123412341234</isbn>
+      <pages>1234</pages>
+      <isIllustrated>false</isIllustrated>
+      <inLibrary>true</inLibrary>
+    </entities.Book>
+    <entities.Book>
+      <title>The Hobbit</title>
+      <author>JRR Tolkien</author>
+      <isbn>98709870987</isbn>
+      <pages>987</pages>
+      <isIllustrated>true</isIllustrated>
+      <inLibrary>true</inLibrary>
+    </entities.Book>
+  </list>
+</object-stream>

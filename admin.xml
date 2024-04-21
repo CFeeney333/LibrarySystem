@@ -1,0 +1,8 @@
+<object-stream>
+  <entities.Admin>
+    <account>
+      <userName>admin</userName>
+      <password>password</password>
+    </account>
+  </entities.Admin>
+</object-stream>

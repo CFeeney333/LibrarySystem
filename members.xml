@@ -1,0 +1,16 @@
+<object-stream>
+  <list>
+    <entities.Member>
+      <account>
+        <userName>JReilly</userName>
+        <password>asdfasdf</password>
+      </account>
+      <id>1234</id>
+      <firstName>Jacob</firstName>
+      <lastName>O&apos;Reilly</lastName>
+      <phone>785 884 8473</phone>
+      <email>JReilly@gmail.com</email>
+      <borrowedBooks/>
+    </entities.Member>
+  </list>
+</object-stream>

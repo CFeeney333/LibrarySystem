@@ -1,0 +1,37 @@
+<object-stream>
+  <list>
+    <entities.Staff>
+      <account>
+        <userName>CFeeney</userName>
+        <password>asdfasdf</password>
+      </account>
+      <id>1234</id>
+      <firstName>Cathal</firstName>
+      <lastName>Feeney</lastName>
+      <phone>089 123 4567</phone>
+      <email>cfeeney@gmail.com</email>
+    </entities.Staff>
+    <entities.Staff>
+      <account>
+        <userName>JMurray</userName>
+        <password>asdfasdf</password>
+      </account>
+      <id>987</id>
+      <firstName>Jessica</firstName>
+      <lastName>Murray</lastName>
+      <phone>905 545 8269</phone>
+      <email>JMurry@gmail.com</email>
+    </entities.Staff>
+    <entities.Staff>
+      <account>
+        <userName>Brand</userName>
+        <password>asdfasdf</password>
+      </account>
+      <id>2345</id>
+      <firstName>Brandon</firstName>
+      <lastName>MacTiernan</lastName>
+      <phone>277 208 1613</phone>
+      <email>BMacT@protonmail.ie</email>
+    </entities.Staff>
+  </list>
+</object-stream>
