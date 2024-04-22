@@ -503,7 +503,7 @@ public class Library {
     public ArrayList<Book> getBooksByInLibrary(boolean inLibrary) {
         ArrayList<Book> booksInLibrary = new ArrayList<>();
         for (Book b : books) {
-            if (b.isIllustrated() == inLibrary) {
+            if (b.isInLibrary() == inLibrary) {
                 booksInLibrary.add(b);
             }
         }
