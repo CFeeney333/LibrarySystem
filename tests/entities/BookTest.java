@@ -1,4 +1,4 @@
-import entities.Book;
+package entities;
 
 import static org.junit.jupiter.api.Assertions.*;
 
